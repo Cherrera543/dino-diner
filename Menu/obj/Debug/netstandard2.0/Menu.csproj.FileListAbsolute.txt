@@ -1,0 +1,18 @@
+C:\Users\cherrera543\Downloads\dino-diner\dino-diner\Menu\obj\Debug\netstandard2.0\Menu.csprojAssemblyReference.cache
+C:\Users\cherrera543\Downloads\dino-diner\dino-diner\Menu\obj\Debug\netstandard2.0\Menu.csproj.CoreCompileInputs.cache
+C:\Users\cherrera543\Downloads\dino-diner\dino-diner\Menu\obj\Debug\netstandard2.0\Menu.AssemblyInfoInputs.cache
+C:\Users\cherrera543\Downloads\dino-diner\dino-diner\Menu\obj\Debug\netstandard2.0\Menu.AssemblyInfo.cs
+C:\Users\cherrera543\Downloads\dino-diner\dino-diner\Menu\bin\Debug\netstandard2.0\Menu.deps.json
+C:\Users\cherrera543\Downloads\dino-diner\dino-diner\Menu\bin\Debug\netstandard2.0\Menu.dll
+C:\Users\cherrera543\Downloads\dino-diner\dino-diner\Menu\bin\Debug\netstandard2.0\Menu.pdb
+C:\Users\cherrera543\Downloads\dino-diner\dino-diner\Menu\obj\Debug\netstandard2.0\Menu.dll
+C:\Users\cherrera543\Downloads\dino-diner\dino-diner\Menu\obj\Debug\netstandard2.0\Menu.pdb
+C:\Users\colum\Downloads\CIS 400\dino-diner\dino-diner\Menu\bin\Debug\netstandard2.0\Menu.deps.json
+C:\Users\colum\Downloads\CIS 400\dino-diner\dino-diner\Menu\bin\Debug\netstandard2.0\Menu.dll
+C:\Users\colum\Downloads\CIS 400\dino-diner\dino-diner\Menu\bin\Debug\netstandard2.0\Menu.pdb
+C:\Users\colum\Downloads\CIS 400\dino-diner\dino-diner\Menu\obj\Debug\netstandard2.0\Menu.csprojAssemblyReference.cache
+C:\Users\colum\Downloads\CIS 400\dino-diner\dino-diner\Menu\obj\Debug\netstandard2.0\Menu.csproj.CoreCompileInputs.cache
+C:\Users\colum\Downloads\CIS 400\dino-diner\dino-diner\Menu\obj\Debug\netstandard2.0\Menu.AssemblyInfoInputs.cache
+C:\Users\colum\Downloads\CIS 400\dino-diner\dino-diner\Menu\obj\Debug\netstandard2.0\Menu.AssemblyInfo.cs
+C:\Users\colum\Downloads\CIS 400\dino-diner\dino-diner\Menu\obj\Debug\netstandard2.0\Menu.dll
+C:\Users\colum\Downloads\CIS 400\dino-diner\dino-diner\Menu\obj\Debug\netstandard2.0\Menu.pdb

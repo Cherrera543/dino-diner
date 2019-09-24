@@ -4,46 +4,35 @@ using System.Collections.Generic;
  */
 namespace DinoDiner.Menu.Entrees
 {
-    public class Brontowurst{
+    public class Brontowurst : Entree
+    {
 		
 		public bool bun = true;
 		public bool peppers = true;
 		public bool onions = true;
         /// <summary>
-        /// This method allows the price property to be set and reached from other classes.
+        /// This creates and returns a list of ingredients, including the default items, and any that may not have been removed.
         /// </summary>
-        public double Price
+        public List<string> Ingredients
         {
-            get; set;
-        }
-        /// <summary>
-        /// This method allows the calories property to be set and reached from other classes.
-        /// </summary>
-		public uint Calories
-        {
-            get; set;
-        }
-        /// <summary>
-        /// This method creates a list of ingrediants, it includes required ingredients and checks those that are optional.
-        /// </summary>
-        public List<string> Ingredients{
-			get{
-				List<string> Ingredients = new List<string>() {"Brautwurst"};
-				if (bun)
+            get
+            {
+                List<string> Ingredients = new List<string>() { "Brautwurst" };
+                if (bun)
                 {
                     Ingredients.Add("Whole Wheat Bun");
                 }
-				if (peppers)
+                if (peppers)
                 {
                     Ingredients.Add("Peppers");
                 }
-				if (onions)
+                if (onions)
                 {
                     Ingredients.Add("Onion");
                 }
-				return Ingredients;
-			}
-		}
+                return Ingredients;
+            }
+        }
         /// <summary>
         /// This constructor sets the price and calories for the entree.
         /// </summary>
@@ -51,7 +40,8 @@ namespace DinoDiner.Menu.Entrees
         {
 			this.Price = 5.36;
 			this.Calories = 498;
-		}
+            
+        }
 
         /// <summary>
         /// This method checks if the user has declined a bun on the entree and sets the bool to false.

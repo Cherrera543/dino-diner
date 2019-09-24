@@ -4,21 +4,9 @@ using System.Collections.Generic;
  */
 namespace DinoDiner.Menu.Entrees
 {
-    public class TRexKingBurger{
-        /// <summary>
-        /// This method allows the price property to be set and reached from other classes.
-        /// </summary>
-		public double Price
-        {
-            get; set;
-        }
-        /// <summary>
-        /// This method allows the calories property to be set and reached from other classes.
-        /// </summary>
-		public uint Calories
-        {
-            get; set;
-        }
+    public class TRexKingBurger : Entree
+    {
+        
 		
 		public bool bun = true;
 		public bool lettuce = true;
@@ -28,47 +16,50 @@ namespace DinoDiner.Menu.Entrees
 		public bool ketchup = true;
 		public bool mustard = true;
 		public bool mayo = true;
+
         /// <summary>
-        /// This method creates a list of ingrediants, it includes required ingredients and checks those that are optional.
+        /// This creates and returns a list of ingredients, including the default items, and any that may not have been removed.
         /// </summary>
-        public List<string> Ingredients{
-			get{
-				List<string> Ingredients = new List<string>(){"Steakburger Pattie", "Steakburger Pattie", "Steakburger Pattie" };
-				if(bun)
+        public List<string> Ingredients
+        {
+            get
+            {
+                List<string> Ingredients = new List<string>() { "Steakburger Pattie", "Steakburger Pattie", "Steakburger Pattie" };
+                if (bun)
                 {
                     Ingredients.Add("Whole Wheat Bun");
                 }
-				if(lettuce)
+                if (lettuce)
                 {
                     Ingredients.Add("Lettuce");
                 }
-				if(tomato)
+                if (tomato)
                 {
                     Ingredients.Add("Tomato");
                 }
-				if(onion)
+                if (onion)
                 {
                     Ingredients.Add("Onion");
                 }
-				if(pickle)
+                if (pickle)
                 {
                     Ingredients.Add("Pickle");
                 }
-				if(ketchup)
+                if (ketchup)
                 {
                     Ingredients.Add("Ketchup");
                 }
-				if(mustard)
+                if (mustard)
                 {
                     Ingredients.Add("Mustard");
                 }
-				if(mayo)
+                if (mayo)
                 {
                     Ingredients.Add("Mayo");
                 }
-				return Ingredients;
-			}
-		}
+                return Ingredients;
+            }
+        }
         /// <summary>
         /// This constructor sets the price and calories for the entree.
         /// </summary>
@@ -76,7 +67,11 @@ namespace DinoDiner.Menu.Entrees
         {
 			this.Price = 8.45;
 			this.Calories = 728;
-		}
+            Ingredients.Add("Steakburger Pattie");
+            Ingredients.Add("Steakburger Pattie");
+            Ingredients.Add("Steakburger Pattie");
+            
+        }
         /// <summary>
         /// This method checks if the user has declined a bun on the entree and sets the bool to false.
         /// </summary>

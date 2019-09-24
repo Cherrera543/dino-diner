@@ -5,35 +5,22 @@
  */
 namespace DinoDiner.Menu.Entrees
 {
-    public class PrehistoricPBJ
+    public class PrehistoricPBJ: Entree
     {
         private bool peanutButter = true;
         private bool jelly = true;
+
         /// <summary>
-        /// This method allows the price property to be set and reached from other classes.
-        /// </summary>
-        public double Price
-        {
-            get; set;
-        }
-        /// <summary>
-        /// This method allows the calories property to be set and reached from other classes.
-        /// </summary>
-        public uint Calories
-        {
-            get; set;
-        }
-        /// <summary>
-        /// This method creates a list of ingrediants, it includes required ingredients and checks those that are optional.
+        /// This creates and returns a list of ingredients, including the default items, and any that may not have been removed.
         /// </summary>
         public List<string> Ingredients
         {
             get
             {
-                List<string> ingredients = new List<string>() { "Bread" };
-                if (peanutButter) ingredients.Add("Peanut Butter");
-                if (jelly) ingredients.Add("Jelly");
-                return ingredients;
+                List<string> Ingredients = new List<string>() { "Bread" };
+                if (peanutButter) Ingredients.Add("Peanut Butter");
+                if (jelly) Ingredients.Add("Jelly");
+                return Ingredients;
             }
         }
         /// <summary>
@@ -43,6 +30,7 @@ namespace DinoDiner.Menu.Entrees
         {
             this.Price = 6.52;
             this.Calories = 483;
+           
         }
         /// <summary>
         /// This method checks if the user has declined peanut butter on the entree and sets the bool to false.

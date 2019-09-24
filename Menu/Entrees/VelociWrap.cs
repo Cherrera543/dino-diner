@@ -4,56 +4,45 @@ using System.Collections.Generic;
  */
 namespace DinoDiner.Menu.Entrees
 {
-    public class VelociWrap{
-        /// <summary>
-        /// This method allows the price property to be set and reached from other classes.
-        /// </summary>
-		public double Price
-        {
-            get; set;
-        }
-        /// <summary>
-        /// This method allows the calories property to be set and reached from other classes.
-        /// </summary>
-		public uint Calories
-        {
-            get; set;
-        }
-		
+    public class VelociWrap : Entree
+    {
+       
 		public bool dressing = true;
 		public bool lettuce = true;
 		public bool cheese = true;
+
         /// <summary>
-        /// This method creates a list of ingrediants, it includes required ingredients and checks those that are optional.
+        /// This creates and returns a list of ingredients, including the default items, and any that may not have been removed.
         /// </summary>
         public List<string> Ingredients
         {
-			get
+            get
             {
-                List<string> Ingredients = new List<string>() { "Flour Tortilla", "Chicken Breast" };
-				if(dressing)
+                List<string> Ingredients = new List<string>() { "Flour Tortilla", "Chicken Breast"};
+                if (dressing)
                 {
                     Ingredients.Add("Ceasar Dressing");
                 }
-				if(lettuce)
+                if (lettuce)
                 {
                     Ingredients.Add("Romaine Lettuce");
                 }
-				if(cheese)
+                if (cheese)
                 {
                     Ingredients.Add("Parmesan Cheese");
                 }
-				return Ingredients;
-			}
-		}
+                return Ingredients;
+            }
+        }
         /// <summary>
         /// This constructor sets the price and calories for the entree.
         /// </summary>
         public VelociWrap()
         {
 			this.Price = 6.86;
-			this.Calories = 356;
-		}
+            this.Calories = 356;
+            
+        }
         /// <summary>
         /// This method checks if the user has declined dressing on the entree and sets the bool to false.
         /// </summary>
