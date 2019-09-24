@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Xunit;
+using DinoDiner.Menu.Entrees;
 
 namespace MenuTest.Entrees
 {
@@ -35,6 +36,7 @@ namespace MenuTest.Entrees
             Assert.Equal<int>(6, ingredients.Count);
         }
 
+        [Fact]
         public void AddingNuggetsShouldAddIngredients()
         {
             DinoNuggets dn = new DinoNuggets();
@@ -45,7 +47,7 @@ namespace MenuTest.Entrees
             {
                 if (ingredient.Equals("Chicken Nugget")) nuggetCount++;
             }
-            Assert.Equal(7, nuggetCount);
+            Assert.Equal<int>(7, nuggetCount);
             Assert.Equal<int>(7, dn.Ingredients.Count);
 
             dn.AddNugget();
@@ -55,32 +57,33 @@ namespace MenuTest.Entrees
             {
                 if (ingredient.Equals("Chicken Nugget")) nuggetCount++;
             }
-            Assert.Equal(8, nuggetCount);
+            Assert.Equal<int>(8, nuggetCount);
             Assert.Equal<int>(8, dn.Ingredients.Count);
 
         }
 
+        [Fact]
         public void AddingNuggetsShouldIncreasePrice()
         {
             DinoNuggets dn = new DinoNuggets();
             dn.AddNugget();
-            Assert.Equal(dn.Price, 4.50);
+            Assert.Equal(dn.Price, 4.50, 2);
             dn.AddNugget();
-            Assert.Equal(dn.Price, 4.75);
+            Assert.Equal(dn.Price, 4.75, 2);
             dn.AddNugget();
-            Assert.Equal(dn.Price, 5.0);
+            Assert.Equal(dn.Price, 5.0, 2);
         }
 
-
+        [Fact]
         public void AddingNuggetsShouldIncreaseCalories()
         {
             DinoNuggets dn = new DinoNuggets();
             dn.AddNugget();
-            Assert.Equal(dn.Calories, 59*7);
+            Assert.Equal<uint>(dn.Calories, 59*7);
             dn.AddNugget();
-            Assert.Equal(dn.Calories, 59*8);
+            Assert.Equal<uint>(dn.Calories, 59*8);
             dn.AddNugget();
-            Assert.Equal(dn.Calories, 59*9);
+            Assert.Equal<uint>(dn.Calories, 59*9);
         }
     }
 }
