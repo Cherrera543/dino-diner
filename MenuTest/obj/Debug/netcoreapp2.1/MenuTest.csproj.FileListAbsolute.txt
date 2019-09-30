@@ -26,7 +26,6 @@ C:\Users\colum\Downloads\CIS 400\dino-diner\dino-diner\MenuTest\bin\Debug\netcor
 C:\Users\colum\Downloads\CIS 400\dino-diner\dino-diner\MenuTest\bin\Debug\netcoreapp2.1\Menu.dll
 C:\Users\colum\Downloads\CIS 400\dino-diner\dino-diner\MenuTest\bin\Debug\netcoreapp2.1\Menu.pdb
 C:\Users\colum\Downloads\CIS 400\dino-diner\dino-diner\MenuTest\obj\Debug\netcoreapp2.1\MenuTest.csprojAssemblyReference.cache
-C:\Users\colum\Downloads\CIS 400\dino-diner\dino-diner\MenuTest\obj\Debug\netcoreapp2.1\MenuTest.csproj.CoreCompileInputs.cache
 C:\Users\colum\Downloads\CIS 400\dino-diner\dino-diner\MenuTest\obj\Debug\netcoreapp2.1\MenuTest.AssemblyInfoInputs.cache
 C:\Users\colum\Downloads\CIS 400\dino-diner\dino-diner\MenuTest\obj\Debug\netcoreapp2.1\MenuTest.AssemblyInfo.cs
 C:\Users\colum\Downloads\CIS 400\dino-diner\dino-diner\MenuTest\obj\Debug\netcoreapp2.1\MenuTest.csproj.CopyComplete
