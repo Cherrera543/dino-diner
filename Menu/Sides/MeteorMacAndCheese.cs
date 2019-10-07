@@ -5,14 +5,14 @@ using System.Text;
 /// MeteorMacAndCheese
 /// Columba Herrera-Gonzalez
 /// </summary>
-namespace DinoDiner.Menu.Sides
+namespace DinoDiner.Menu
 {
     public class MeteorMacAndCheese : Side
     {
         /// <summary>
         /// This ingredients item adds all the ingredients to the list, none can be removed.
         /// </summary>
-        public List<string> Ingredients
+        public override List<string> Ingredients
         {
             get
             {
@@ -23,8 +23,10 @@ namespace DinoDiner.Menu.Sides
                 return Ingredients;
             }
         }
-
-        public Size Size
+        /// <summary>
+        /// Override of the Size property, as size changes so does the price and calories.
+        /// </summary>
+        public override Size Size
         {
             get
             {
@@ -33,15 +35,20 @@ namespace DinoDiner.Menu.Sides
             set
             {
                 this.Size = value;
-                if (value == Size.Medium)
+                switch (value)
                 {
-                    this.Price = 1.45;
-                    this.Calories = 490;
-                }
-                else if (value == Size.Large)
-                {
-                    this.Price = 1.99;
-                    this.Calories = 520;
+                    case Size.Small:
+                        Price = .99;
+                        Calories = 420;
+                        break;
+                    case Size.Medium:
+                        Price = 1.45;
+                        Calories = 490;
+                        break;
+                    case Size.Large:
+                        Price = 1.99;
+                        Calories = 520;
+                        break;
                 }
             }
         }
@@ -53,6 +60,14 @@ namespace DinoDiner.Menu.Sides
             this.Size = Size.Small;
             this.Price = .99;
             this.Calories = 420;
+        }
+        /// <summary>
+        /// Creates a string with the size of the item.
+        /// </summary>
+        /// <returns>Returns a string with the size and name of the Side.</returns>
+        public override string ToString()
+        {
+            return $"{Size} Meteor Mac and Cheese";
         }
     }
 }

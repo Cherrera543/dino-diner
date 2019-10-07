@@ -2,7 +2,7 @@ using System.Collections.Generic;
 /*DinoNuggets
  * Columba Herrera-Gonzalez
  */
-namespace DinoDiner.Menu.Entrees
+namespace DinoDiner.Menu
 {
     public class DinoNuggets : Entree
     {
@@ -21,7 +21,11 @@ namespace DinoDiner.Menu.Entrees
                 return Ingredients;
             }
         }
-        uint NumofNugs = 6;
+
+        /// <summary>
+        /// Uint keeps track of the number of nuggets.
+        /// </summary>
+        private uint NumofNugs = 6;
        
         /// <summary>
         /// This constructor sets the price and calories for the entree.
@@ -40,6 +44,15 @@ namespace DinoDiner.Menu.Entrees
         {
 			NumofNugs++;
 			Price+=.25;
+            Calories += 59;
 		}
-	}
+        /// <summary>
+        /// Creates a string with the entree name.
+        /// </summary>
+        /// <returns>Returns entree name.</returns>
+        public override string ToString()
+        {
+            return "Dino-Nuggets";
+        }
+    }
 }

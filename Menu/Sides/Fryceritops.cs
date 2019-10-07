@@ -5,14 +5,14 @@ using System.Text;
 /// Fryceritops
 /// Columba Herrera-Gonzalez
 /// </summary>
-namespace DinoDiner.Menu.Sides
+namespace DinoDiner.Menu
 {
     public class Fryceritops : Side
     {
         /// <summary>
         /// This ingredients item adds all the ingredients to the list, none can be removed.
         /// </summary>
-        public List<string> Ingredients
+        public override List<string> Ingredients
         {
             get
             {
@@ -23,8 +23,10 @@ namespace DinoDiner.Menu.Sides
                 return Ingredients;
             }
         }
-        
-        public Size Size
+        /// <summary>
+        /// Override of Size property, as size changes so does price and calories.
+        /// </summary>
+        public override Size Size
         {
             get
             {
@@ -33,7 +35,22 @@ namespace DinoDiner.Menu.Sides
             set
             {
                 this.Size = value;
-                if(value == Size.Medium)
+                switch (value)
+                {
+                    case Size.Small:
+                        Price = .99;
+                        Calories = 222;
+                        break;
+                    case Size.Medium:
+                        Price = 1.45;
+                        Calories = 365;
+                        break;
+                    case Size.Large:
+                        Price = 1.99;
+                        Calories = 480;
+                        break;
+                }
+                if (value == Size.Medium)
                 {
                     this.Price = 1.45;
                     this.Calories = 365;
@@ -54,7 +71,13 @@ namespace DinoDiner.Menu.Sides
             Price = .99;
             Calories = 222;                                                         
         }
-        
-        
+        /// <summary>
+        /// Creates a string that has the size of the item.
+        /// </summary>
+        /// <returns> Returns a string with the size and name of the side.</returns>
+        public override string ToString()
+        {
+            return $"{Size} Friceritops";
+        }
     }
 }

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 /*PterodactylWings
  * Columba Herrera-Gonzalez
  */
-namespace DinoDiner.Menu.Entrees
+namespace DinoDiner.Menu
 {
     public class PterodactylWings: Entree
     {
@@ -28,5 +28,13 @@ namespace DinoDiner.Menu.Entrees
             Ingredients.Add("Chicken");
             Ingredients.Add("Wing Sauce");
 		}
-	}
+        /// <summary>
+        /// Creates a string with the entree name.
+        /// </summary>
+        /// <returns>Returns entree name.</returns>
+        public override string ToString()
+        {
+            return "Pterodactyl Wings";
+        }
+    }
 }

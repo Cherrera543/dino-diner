@@ -5,14 +5,14 @@ using System.Text;
 /// Triceritops
 /// Columba Herrera-Gonzalez
 /// </summary>
-namespace DinoDiner.Menu.Sides
+namespace DinoDiner.Menu
 {
     public class Triceritots : Side
     {
         /// <summary>
         /// This ingredients item adds all the ingredients to the list, none can be removed.
         /// </summary>
-        public List<string> Ingredients
+        public override List<string> Ingredients
         {
             get
             {
@@ -24,7 +24,7 @@ namespace DinoDiner.Menu.Sides
             }
         }
 
-        public Size Size
+        public override Size Size
         {
             get
             {
@@ -33,16 +33,22 @@ namespace DinoDiner.Menu.Sides
             set
             {
                 this.Size = value;
-                if (value == Size.Medium)
+                switch (value)
                 {
-                    this.Price = 1.45;
-                    this.Calories = 410;
+                    case Size.Small:
+                        Price = .99;
+                        Calories = 352;
+                        break;
+                    case Size.Medium:
+                        Price = 1.45;
+                        Calories = 410;
+                        break;
+                    case Size.Large:
+                        Price = 1.99;
+                        Calories = 590;
+                        break;
                 }
-                else if (value == Size.Large)
-                {
-                    this.Price = 1.99;
-                    this.Calories = 590;
-                }
+                
             }
         }
         /// <summary>
@@ -54,7 +60,13 @@ namespace DinoDiner.Menu.Sides
             this.Price = .99;
             this.Calories = 352;
         }
-
-        
+        /// <summary>
+        /// Creates a string with the size of the item.
+        /// </summary>
+        /// <returns>Returns a string with the size and name of the side.</returns>
+        public override string ToString()
+        {
+            return $"{Size} Triceritots";
+        }
     }
 }

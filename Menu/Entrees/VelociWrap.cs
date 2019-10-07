@@ -2,12 +2,14 @@ using System.Collections.Generic;
 /*VelociWrap
  * Columba Herrera-Gonzalez
  */
-namespace DinoDiner.Menu.Entrees
+namespace DinoDiner.Menu
 {
     public class VelociWrap : Entree
     {
-       
-		public bool dressing = true;
+        /// <summary>
+        /// These booleans adds these ingredients, their default is true.
+        /// </summary>
+        public bool dressing = true;
 		public bool lettuce = true;
 		public bool cheese = true;
 
@@ -64,5 +66,13 @@ namespace DinoDiner.Menu.Entrees
         {
 			cheese = false;
 		}
-	}
+        /// <summary>
+        /// Creates a string with the entree name.
+        /// </summary>
+        /// <returns>Returns entree name.</returns>
+        public override string ToString()
+        {
+            return "Veloci-Wrap";
+        }
+    }
 }

@@ -2,13 +2,21 @@ using System.Collections.Generic;
 /*Brontowurst
  * Columba Herrera-Gonzalez
  */
-namespace DinoDiner.Menu.Entrees
+namespace DinoDiner.Menu
 {
     public class Brontowurst : Entree
     {
-		
+        /// <summary>
+        /// Boolean sets bun ingredient as included.
+        /// </summary>
 		public bool bun = true;
+        /// <summary>
+        /// Boolean sets pepper ingredient as included.
+        /// </summary>
 		public bool peppers = true;
+        /// <summary>
+        /// Boolean sets onion pepper as included.
+        /// </summary>
 		public bool onions = true;
         /// <summary>
         /// This creates and returns a list of ingredients, including the default items, and any that may not have been removed.
@@ -66,5 +74,13 @@ namespace DinoDiner.Menu.Entrees
         {
 			this.onions = false;
 		}
-	}
+        /// <summary>
+        /// Creates a string with the entree name.
+        /// </summary>
+        /// <returns>Returns entree name.</returns>
+        public override string ToString()
+        {
+            return "Brontowurst";
+        }
+    }
 }

@@ -1,10 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
-namespace DinoDiner.Menu.Sides
+/// <summary>
+/// Side
+/// Columba Herrera-Gonzalez
+/// </summary>
+namespace DinoDiner.Menu
 {
-
+    /// <summary>
+    /// Enum that lists all the possible size for drinks and sides.
+    /// </summary>
     public enum Size
     {
         Small,
@@ -12,7 +17,7 @@ namespace DinoDiner.Menu.Sides
         Large
     }
 
-    public abstract class Side
+    public abstract class Side: MenuItem
     {
         /// <summary>
         /// Gets and sets the price
@@ -27,12 +32,12 @@ namespace DinoDiner.Menu.Sides
         /// <summary>
         /// Gets the ingredients list
         /// </summary>
-        public List<string> Ingredients { get; }
+        public abstract List<string> Ingredients { get; }
 
         /// <summary>
         /// Gets or sets the size
         /// </summary>
-        public Size Size { get; set; }
+        public abstract Size Size { get; set; }
 
     }
 }

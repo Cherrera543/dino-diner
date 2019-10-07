@@ -3,11 +3,17 @@
  * Nathan Bean
  * Modified by Columba Herrera-Gonzalez
  */
-namespace DinoDiner.Menu.Entrees
+namespace DinoDiner.Menu
 {
     public class PrehistoricPBJ: Entree
     {
+        /// <summary>
+        /// Boolean that sets peanut butter as an ingredient, default is true.
+        /// </summary>
         private bool peanutButter = true;
+        /// <summary>
+        /// Boolean that sets jelly as an ingredient, default is true.
+        /// </summary>
         private bool jelly = true;
 
         /// <summary>
@@ -45,6 +51,14 @@ namespace DinoDiner.Menu.Entrees
         public void HoldJelly()
         {
             this.jelly = false;
+        }
+        /// <summary>
+        /// Creates a string with the entree name.
+        /// </summary>
+        /// <returns>Returns entree name.</returns>
+        public override string ToString()
+        {
+            return "Prehistoric PB&J";
         }
     }
 }

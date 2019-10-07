@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
-namespace DinoDiner.Menu.Entrees
+/// <summary>
+/// Entree
+/// Columba Herrera-Gonzalez
+/// </summary>
+namespace DinoDiner.Menu
 {
-    public abstract class Entree
+    public abstract class Entree : MenuItem
     {
         /// <summary>
         /// Gets and sets the price

@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Entrees\DinoNuggets.cs~RF3909254f.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Milestones\" />
   </ItemGroup>
 

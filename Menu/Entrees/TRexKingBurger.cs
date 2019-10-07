@@ -2,12 +2,14 @@ using System.Collections.Generic;
 /*TRexKingBurger
  * Columba Herrera-Gonzalez
  */
-namespace DinoDiner.Menu.Entrees
+namespace DinoDiner.Menu
 {
     public class TRexKingBurger : Entree
     {
         
-		
+		/// <summary>
+        /// These booleans adds these ingredients, their default is true.
+        /// </summary>
 		public bool bun = true;
 		public bool lettuce = true;
 		public bool tomato = true;
@@ -133,5 +135,13 @@ namespace DinoDiner.Menu.Entrees
         {
 			mayo = false;
 		}
-	}
+        /// <summary>
+        /// Creates a string with the entree name.
+        /// </summary>
+        /// <returns>Returns entree name.</returns>
+        public override string ToString()
+        {
+            return "T-Rex King Burger";
+        }
+    }
 }

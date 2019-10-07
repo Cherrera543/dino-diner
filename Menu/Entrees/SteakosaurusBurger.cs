@@ -2,15 +2,26 @@ using System.Collections.Generic;
 /*SteakosaurusBurger
  * Columba Herrera-Gonzalez
  */
-namespace DinoDiner.Menu.Entrees
+namespace DinoDiner.Menu
 {
     public class SteakosaurusBurger : Entree
     {
        
-		
+		/// <summary>
+        /// Boolean sets bun as an ingredient, default is true.
+        /// </summary>
 		public bool bun = true;
+        /// <summary>
+        /// Boolean sets pickles as an ingredient, default is true.
+        /// </summary>
 		public bool pickle = true;
+        /// <summary>
+        /// Boolean sets ketchup as an ingredient, default is true.
+        /// </summary>
 		public bool ketchup = true;
+        /// <summary>
+        /// Boolean sets mustard as an ingredient, default is true.
+        /// </summary>
 		public bool mustard = true;
 
         /// <summary>
@@ -65,6 +76,9 @@ namespace DinoDiner.Menu.Entrees
         {
 			pickle = false;
 		}
+        /// <summary>
+        /// This method checks if the user has declined ketchup on the entree.
+        /// </summary>
 		public void HoldKetchup()
         {
 			ketchup= false;
@@ -77,5 +91,13 @@ namespace DinoDiner.Menu.Entrees
         {
 			mustard = false;
 		}
-	}
+        /// <summary>
+        /// Creates a string with the entree name.
+        /// </summary>
+        /// <returns>Returns entree name.</returns>
+        public override string ToString()
+        {
+            return "Steakosaurus Burger";
+        }
+    }
 }
