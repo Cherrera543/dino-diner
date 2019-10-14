@@ -9,6 +9,7 @@ namespace DinoDiner.Menu
 {
     public class Water: Drink
     {
+        public Size size;
         /// <summary>
         /// Boolean states whether to add lemon. Default is false.
         /// </summary>
@@ -31,8 +32,8 @@ namespace DinoDiner.Menu
         /// </summary>
         public override Size Size
         {
-            get { return Size; }
-            set { Size = value; }
+            get { return size; }
+            set { size = value; }
         }
         /// <summary>
         /// Method adds lemon to the water.

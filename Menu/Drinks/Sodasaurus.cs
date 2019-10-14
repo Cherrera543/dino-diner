@@ -25,10 +25,7 @@ namespace DinoDiner.Menu
 
     public class Sodasaurus : Drink
     {
-        /// <summary>
-        /// Boolean for ice set to true.
-        /// </summary>
-        public bool Ice = true;
+        private Size size;
         /// <summary>
         /// Getter and Setter for flavor of the Sodasaurus.
         /// </summary>
@@ -52,10 +49,10 @@ namespace DinoDiner.Menu
         /// </summary>
         public override Size Size
         {
-            get { return Size; }
+            get { return size; }
             set
             {
-                Size = value;
+                size = value;
                 switch (value)
                 {
                     case Size.Small:

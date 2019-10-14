@@ -19,7 +19,7 @@ namespace DinoDiner.Menu
         /// <summary>
         /// This creates and returns a list of ingredients, including the default items, and any that may not have been removed.
         /// </summary>
-        public List<string> Ingredients
+        public override List<string> Ingredients
         {
             get
             {

@@ -1,0 +1,31 @@
+﻿<Page x:Class="PointOfSale.MenuCategorySelection"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PointOfSale"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MenuCategorySelection">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.Resources>
+            <Style TargetType="Button">
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="FontSize" Value="24"/>
+            </Style>
+        </Grid.Resources>
+        <Button Click ="SelectCombo" Grid.Row="0" Grid.Column="0">Combos</Button>
+        <Button Click ="SelectEntree" Grid.Row="0" Grid.Column="1">Entrees</Button>
+        <Button Click ="SelectSide" Grid.Row="1" Grid.Column="0">Sides</Button>
+        <Button Click ="SelectDrink" Grid.Row="1" Grid.Column="1">Drinks</Button>
+    </Grid>
+</Page>

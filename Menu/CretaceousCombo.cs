@@ -89,5 +89,10 @@ namespace DinoDiner.Menu
         {
             this.Entree = entree;
         }
+
+        public override string ToString()
+        {
+            return Entree + " Combo";
+        }
     }
 }

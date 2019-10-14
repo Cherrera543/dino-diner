@@ -9,6 +9,8 @@ namespace DinoDiner.Menu
 {
     public class Tyrannotea : Drink
     {
+        private bool sweet;
+        private Size size;
         /// <summary>
         /// Boolean of whether the tea has lemon, default is false.
         /// </summary>
@@ -16,7 +18,25 @@ namespace DinoDiner.Menu
         /// <summary>
         /// Boolean of whether it is sweet tea, default is false.
         /// </summary>
-        public bool Sweet = false;
+        public bool Sweet
+        {
+            get { return sweet; }
+            set
+            {
+                sweet = value;
+                switch (value)
+                {
+                    case true:
+                        Calories = Calories * 2;
+                        break;
+                    case false:
+                        if(Size == Size.Small) { Calories = 8; }
+                        else if(Size == Size.Medium) { Calories = 16; }
+                        else { Calories = 32; }
+                        break;
+                }
+            }
+        }
         /// <summary>
         /// Override of list of ingredients, includes base ingredients, lemon and sugar added according to their boolean.
         /// </summary>
@@ -37,23 +57,26 @@ namespace DinoDiner.Menu
         /// </summary>
         public override Size Size
         {
-            get { return Size; }
+            get {return size; }
             set
             {
-                Size = value;
+                size = value;
                 switch (value)
                 {
                     case Size.Small:
                         Price = .99;
-                        Calories = 8;
+                        if (Sweet) Calories = 16;
+                        else Calories = 8;
                         break;
                     case Size.Medium:
                         Price = 1.49;
-                        Calories = 16;
+                        if (Sweet) Calories = 32;
+                        else Calories = 16;
                         break;
                     case Size.Large:
                         Price = 1.99;
-                        Calories = 32;
+                        if (Sweet) Calories = 64;
+                        else Calories = 32;
                         break;
                 }
             }
@@ -80,6 +103,7 @@ namespace DinoDiner.Menu
             Size = Size.Small;
             Price = .99;
             Calories = 8;
+            Ice = true;
         }
         /// <summary>
         /// Creates a string that has the size and says whether it is a sweet tea or not.

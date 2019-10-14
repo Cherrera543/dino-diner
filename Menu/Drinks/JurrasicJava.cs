@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 /// <summary>
-/// Jurrasic Java
+/// Jurassic Java
 /// Columba Herrera-Gonzalez
 /// </summary>
 namespace DinoDiner.Menu
 {
-    public class JurrasicJava : Drink
+    public class JurassicJava : Drink
     {
+        private Size size;
         /// <summary>
         /// Boolean for whether the coffee should have room for cream.
         /// </summary>
@@ -36,10 +37,10 @@ namespace DinoDiner.Menu
         /// </summary>
          public override Size Size
         {
-            get { return Size; }
+            get { return size; }
             set
             {
-                Size = value;
+                size = value;
                 switch (value)
                 {
                     case Size.Small:
@@ -82,7 +83,7 @@ namespace DinoDiner.Menu
         /// <summary>
         /// Constructor, sets default size to small and ice to false.
         /// </summary>
-        public JurrasicJava()
+        public JurassicJava()
         {
             Size = Size.Small;
             Price = .59;
@@ -95,8 +96,8 @@ namespace DinoDiner.Menu
         /// <returns> String of size with/without decaf and name of drink</returns>
         public override string ToString()
         {
-            if (Decaf) return $"{Size} Decaf Jurrasic Java";
-            else return $"{Size} Jurrasic Java";
+            if (Decaf) return $"{Size} Decaf Jurassic Java";
+            else return $"{Size} Jurassic Java";
         }
     }
 }
