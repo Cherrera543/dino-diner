@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
 /// <summary>
 /// Mezzoralla Sticks
 /// Columba Herrera-Gonzalez
@@ -9,6 +10,9 @@ namespace DinoDiner.Menu
 {
     public class MezzorellaSticks: Side
     {
+        public override string Description { get { return this.ToString(); } }
+        public override string[] Special { get { return new string[0]; } }
+        private Size size;
         /// <summary>
         /// This ingredients item adds all the ingredients to the list, none can be removed.
         /// </summary>
@@ -30,11 +34,11 @@ namespace DinoDiner.Menu
         {
             get
             {
-                return this.Size;
+                return this.size;
             }
             set
             {
-                this.Size = value;
+                this.size = value;
                 switch (value)
                 {
                     case Size.Small:
@@ -46,11 +50,13 @@ namespace DinoDiner.Menu
                         Calories = 610;
                         break;
                     case Size.Large:
-                        Price = 1.99;
+                        Price = 1.95;
                         Calories = 720;
                         break;
                 }
-                
+                NotifyofPropertyChanged("Size");
+                NotifyofPropertyChanged("Price");
+                NotifyofPropertyChanged("Calories");
             }
         }
         /// <summary>
@@ -59,8 +65,6 @@ namespace DinoDiner.Menu
         public MezzorellaSticks()
         {
             this.Size = Size.Small;
-            this.Price = .99;
-            this.Calories = 540;
         }
         /// <summary>
         /// Creates a string with the size of the item.

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 /// <summary>
 /// Side
@@ -19,6 +20,11 @@ namespace DinoDiner.Menu
 
     public abstract class Side: MenuItem
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void NotifyofPropertyChanged(string name = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
         /// <summary>
         /// Gets and sets the price
         /// </summary>
@@ -38,6 +44,8 @@ namespace DinoDiner.Menu
         /// Gets or sets the size
         /// </summary>
         public abstract Size Size { get; set; }
+        public abstract string Description { get; }
+        public abstract string[] Special { get; }
 
     }
 }

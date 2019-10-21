@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
 /// <summary>
 /// Jurassic Java
 /// Columba Herrera-Gonzalez
 /// </summary>
 namespace DinoDiner.Menu
 {
-    public class JurassicJava : Drink
+    public class JurassicJava : Drink, INotifyPropertyChanged
     {
         private Size size;
         /// <summary>
@@ -56,6 +57,23 @@ namespace DinoDiner.Menu
                         Calories = 8;
                         break;
                 }
+                NotifyofPropertyChanged("Size");
+                NotifyofPropertyChanged("Price");
+                NotifyofPropertyChanged("Calories");
+            }
+        }
+
+        public override string Description { get { return this.ToString(); } }
+
+        public override string[] Special
+        {
+            get
+            {
+                List<string> special = new List<string>();
+                if (RoomForCream) special.Add("Leave Room For Cream");
+                if (Ice) special.Add("Add Ice");
+                if (Decaf) special.Add("Make Decaf");
+                return special.ToArray();
             }
         }
 
@@ -65,6 +83,7 @@ namespace DinoDiner.Menu
         public void LeaveRoomForCream()
         {
             RoomForCream = true;
+            NotifyofPropertyChanged("Special");
         }
         /// <summary>
         /// Sets boolean to true to make Iced Coffee.
@@ -72,6 +91,7 @@ namespace DinoDiner.Menu
         public void AddIce()
         {
             Ice = true;
+            NotifyofPropertyChanged("Special");
         }
         /// <summary>
         /// Sets boolean to true to make a decaf coffee.
@@ -79,6 +99,7 @@ namespace DinoDiner.Menu
         public void MakeDecaf()
         {
             Decaf = true;
+            NotifyofPropertyChanged("Special");
         }
         /// <summary>
         /// Constructor, sets default size to small and ice to false.
@@ -86,8 +107,6 @@ namespace DinoDiner.Menu
         public JurassicJava()
         {
             Size = Size.Small;
-            Price = .59;
-            Calories = 2;
             Ice = false;
         }
         /// <summary>

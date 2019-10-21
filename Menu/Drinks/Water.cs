@@ -1,14 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
 /// <summary>
 /// Water
 /// Columba Herrera-Gonzalez
 /// </summary>
 namespace DinoDiner.Menu
 {
-    public class Water: Drink
+    public class Water: Drink, INotifyPropertyChanged
     {
+        public override string Description { get { return this.ToString(); } }
+        public override string[] Special
+        {
+            get
+            {
+                List<string> special = new List<string>();
+                if (Lemon) special.Add("Add Lemon");
+                return special.ToArray();
+            }
+        }
         public Size size;
         /// <summary>
         /// Boolean states whether to add lemon. Default is false.
@@ -33,7 +44,11 @@ namespace DinoDiner.Menu
         public override Size Size
         {
             get { return size; }
-            set { size = value; }
+            set 
+            { 
+                size = value;
+                NotifyofPropertyChanged("Size");
+            }
         }
         /// <summary>
         /// Method adds lemon to the water.
@@ -41,6 +56,7 @@ namespace DinoDiner.Menu
         public void AddLemon()
         {
             Lemon = true;
+            NotifyofPropertyChanged("Special");
         }
         /// <summary>
         /// Constructor, sets default size to small and ice to true.

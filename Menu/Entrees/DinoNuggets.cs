@@ -1,11 +1,22 @@
 using System.Collections.Generic;
+using System.ComponentModel;
 /*DinoNuggets
  * Columba Herrera-Gonzalez
  */
 namespace DinoDiner.Menu
 {
-    public class DinoNuggets : Entree
+    public class DinoNuggets : Entree, INotifyPropertyChanged
     {
+        public override string Description { get { return this.ToString(); } }
+        public override string[] Special
+        {
+            get
+            {
+                List<string> special = new List<string>();
+                if (NumofNugs > 6) special.Add((NumofNugs - 6) + " Extra Nuggets");
+                return special.ToArray();
+            }
+        }
         /// <summary>
         /// This creates and returns a list of ingredients, including the default items, and any that may not have been removed.
         /// </summary>
@@ -43,9 +54,12 @@ namespace DinoDiner.Menu
 		public void AddNugget()
         {
 			NumofNugs++;
+            NotifyofPropertyChanged("Special");
 			Price+=.25;
+            NotifyofPropertyChanged("Price");
             Calories += 59;
-		}
+            NotifyofPropertyChanged("Calories");
+        }
         /// <summary>
         /// Creates a string with the entree name.
         /// </summary>

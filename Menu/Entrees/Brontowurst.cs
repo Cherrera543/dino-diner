@@ -1,11 +1,24 @@
 using System.Collections.Generic;
+using System.ComponentModel;
 /*Brontowurst
  * Columba Herrera-Gonzalez
  */
 namespace DinoDiner.Menu
 {
-    public class Brontowurst : Entree
+    public class Brontowurst : Entree, INotifyPropertyChanged
     {
+        public override string Description { get { return this.ToString(); } }
+        public override string[] Special
+        {
+            get
+            {
+                List<string> special = new List<string>();
+                if (!bun) special.Add("Hold Bun");
+                if (!peppers) special.Add("Hold Pepper");
+                if (!onions) special.Add("Hold Onion");
+                return special.ToArray();
+            }
+        }
         /// <summary>
         /// Boolean sets bun ingredient as included.
         /// </summary>
@@ -57,6 +70,7 @@ namespace DinoDiner.Menu
         public void HoldBun()
         {
 			this.bun = false;
+            NotifyofPropertyChanged("Special");
 		}
 
         /// <summary>
@@ -65,7 +79,8 @@ namespace DinoDiner.Menu
 		public void HoldPeppers()
         {
 			this.peppers = false;
-		}
+            NotifyofPropertyChanged("Special");
+        }
 
         /// <summary>
         /// This method checks if the user has declined onion on the entree and sets the bool to false.
@@ -73,7 +88,8 @@ namespace DinoDiner.Menu
 		public void HoldOnion()
         {
 			this.onions = false;
-		}
+            NotifyofPropertyChanged("Special");
+        }
         /// <summary>
         /// Creates a string with the entree name.
         /// </summary>

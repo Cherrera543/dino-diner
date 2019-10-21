@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
 /// <summary>
 /// Fryceritops
 /// Columba Herrera-Gonzalez
@@ -9,6 +10,10 @@ namespace DinoDiner.Menu
 {
     public class Fryceritops : Side
     {
+        public override string Description { get { return this.ToString(); } }
+        public override string[] Special { get { return new string[0]; } }
+
+        private Size size;
         /// <summary>
         /// This ingredients item adds all the ingredients to the list, none can be removed.
         /// </summary>
@@ -30,11 +35,11 @@ namespace DinoDiner.Menu
         {
             get
             {
-                return this.Size;
+                return this.size;
             }
             set
             {
-                this.Size = value;
+                this.size = value;
                 switch (value)
                 {
                     case Size.Small:
@@ -46,19 +51,13 @@ namespace DinoDiner.Menu
                         Calories = 365;
                         break;
                     case Size.Large:
-                        Price = 1.99;
+                        Price = 1.95;
                         Calories = 480;
                         break;
                 }
-                if (value == Size.Medium)
-                {
-                    this.Price = 1.45;
-                    this.Calories = 365;
-                }else if(value == Size.Large)
-                {
-                    this.Price = 1.95;
-                    this.Calories = 480;
-                }
+                NotifyofPropertyChanged("Size");
+                NotifyofPropertyChanged("Price");
+                NotifyofPropertyChanged("Calories");
             }
         }
 
@@ -67,9 +66,7 @@ namespace DinoDiner.Menu
         /// </summary> 
         public Fryceritops()
         {
-            this.Size = Size.Small;
-            Price = .99;
-            Calories = 222;                                                         
+            this.Size = Size.Small;                                                       
         }
         /// <summary>
         /// Creates a string that has the size of the item.

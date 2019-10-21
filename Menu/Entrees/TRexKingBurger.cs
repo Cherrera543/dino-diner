@@ -1,16 +1,33 @@
 using System.Collections.Generic;
+using System.ComponentModel;
 /*TRexKingBurger
  * Columba Herrera-Gonzalez
  */
 namespace DinoDiner.Menu
 {
-    public class TRexKingBurger : Entree
+    public class TRexKingBurger : Entree, INotifyPropertyChanged
     {
-        
-		/// <summary>
+        public override string Description { get { return this.ToString(); } }
+        public override string[] Special
+        {
+            get
+            {
+                List<string> special = new List<string>();
+                if (!bun) special.Add("Hold Bun");
+                if (!lettuce) special.Add("Hold Lettuce");
+                if (!tomato) special.Add("Hold Tomato");
+                if (!onion) special.Add("Hold Onion");
+                if (!pickle) special.Add("Hold Pickle");
+                if (!ketchup) special.Add("Hold Ketchup");
+                if (!mustard) special.Add("Hold Mustard");
+                if (!mayo) special.Add("Hold Mayo");
+                return special.ToArray();
+            }
+        }
+        /// <summary>
         /// These booleans adds these ingredients, their default is true.
         /// </summary>
-		public bool bun = true;
+        public bool bun = true;
 		public bool lettuce = true;
 		public bool tomato = true;
 		public bool onion = true;
@@ -80,14 +97,16 @@ namespace DinoDiner.Menu
         public void HoldBun()
         {
 			bun = false;
-		}
+            NotifyofPropertyChanged("Special");
+        }
         /// <summary>
         /// This method checks if the user has declined lettuce on the entree and sets the bool to false.
         /// </summary>
 		public void HoldLettuce()
         {
 			lettuce = false;
-		}
+            NotifyofPropertyChanged("Special");
+        }
 
         /// <summary>
         /// This method checks if the user has declined tomato on the entree and sets the bool to false.
@@ -95,7 +114,8 @@ namespace DinoDiner.Menu
 		public void HoldTomato()
         {
 			tomato = false;
-		}
+            NotifyofPropertyChanged("Special");
+        }
 
         /// <summary>
         /// This method checks if the user has declined onion on the entree and sets the bool to false.
@@ -103,7 +123,8 @@ namespace DinoDiner.Menu
 		public void HoldOnion()
         {
 			onion = false;
-		}
+            NotifyofPropertyChanged("Special");
+        }
 
         /// <summary>
         /// This method checks if the user has declined pickle on the entree and sets the bool to false.
@@ -111,14 +132,16 @@ namespace DinoDiner.Menu
 		public void HoldPickle()
         {
 			pickle = false;
-		}
+            NotifyofPropertyChanged("Special");
+        }
         /// <summary>
         /// This method checks if the user has declined ketchup on the entree and sets the bool to false.
         /// </summary>
 		public void HoldKetchup()
         {
 			ketchup = false;
-		}
+            NotifyofPropertyChanged("Special");
+        }
 
         /// <summary>
         /// This method checks if the user has declined mustard on the entree and sets the bool to false.
@@ -126,7 +149,8 @@ namespace DinoDiner.Menu
 		public void HoldMustard()
         {
 			mustard = false;
-		}
+            NotifyofPropertyChanged("Special");
+        }
 
         /// <summary>
         /// This method checks if the user has declined mayo on the entree and sets the bool to false.
@@ -134,7 +158,8 @@ namespace DinoDiner.Menu
 		public void HoldMayo()
         {
 			mayo = false;
-		}
+            NotifyofPropertyChanged("Special");
+        }
         /// <summary>
         /// Creates a string with the entree name.
         /// </summary>

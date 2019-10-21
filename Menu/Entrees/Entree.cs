@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 /// <summary>
 /// Entree
@@ -23,5 +24,13 @@ namespace DinoDiner.Menu
         /// Gets the ingredients list
         /// </summary>
         public abstract List<string> Ingredients { get; }
+        public abstract string Description { get; }
+        public abstract string[] Special { get; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void NotifyofPropertyChanged(string name = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
     }
 }

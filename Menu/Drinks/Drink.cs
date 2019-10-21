@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 /// <summary>
 /// Drink
@@ -10,6 +11,11 @@ namespace DinoDiner.Menu
    
     public abstract class Drink : MenuItem
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void NotifyofPropertyChanged(string name = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
         /// <summary>
         /// Property getter and setter for drink size.
         /// </summary>
@@ -31,6 +37,11 @@ namespace DinoDiner.Menu
         /// </summary>
         public bool Ice { get; set; }
 
+        public abstract string Description { get; }
+
+        public abstract string[] Special { get; }
+
+       
         /// <summary>
         /// Method allows for a drink to not have ice.
         /// </summary>

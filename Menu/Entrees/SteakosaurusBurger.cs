@@ -1,16 +1,29 @@
 using System.Collections.Generic;
+using System.ComponentModel;
 /*SteakosaurusBurger
  * Columba Herrera-Gonzalez
  */
 namespace DinoDiner.Menu
 {
-    public class SteakosaurusBurger : Entree
+    public class SteakosaurusBurger : Entree, INotifyPropertyChanged
     {
-       
-		/// <summary>
+        public override string Description { get { return this.ToString(); } }
+        public override string[] Special
+        {
+            get
+            {
+                List<string> special = new List<string>();
+                if (!bun) special.Add("Hold Bun");
+                if (!pickle) special.Add("Hold Pickle");
+                if (!ketchup) special.Add("Hold Ketchup");
+                if (!mustard) special.Add("Hold Mustard");
+                return special.ToArray();
+            }
+        }
+        /// <summary>
         /// Boolean sets bun as an ingredient, default is true.
         /// </summary>
-		public bool bun = true;
+        public bool bun = true;
         /// <summary>
         /// Boolean sets pickles as an ingredient, default is true.
         /// </summary>
@@ -67,6 +80,7 @@ namespace DinoDiner.Menu
         public void HoldBun()
         {
 			bun = false;
+            NotifyofPropertyChanged("Special");
 		}
 
         /// <summary>
@@ -75,6 +89,7 @@ namespace DinoDiner.Menu
 		public void HoldPickle()
         {
 			pickle = false;
+            NotifyofPropertyChanged("Special");
 		}
         /// <summary>
         /// This method checks if the user has declined ketchup on the entree.
@@ -82,7 +97,8 @@ namespace DinoDiner.Menu
 		public void HoldKetchup()
         {
 			ketchup= false;
-		}
+            NotifyofPropertyChanged("Special");
+        }
 
         /// <summary>
         /// This method checks if the user has declined mustard on the entree and sets the bool to false.
@@ -90,7 +106,8 @@ namespace DinoDiner.Menu
 		public void HoldMustard()
         {
 			mustard = false;
-		}
+            NotifyofPropertyChanged("Special");
+        }
         /// <summary>
         /// Creates a string with the entree name.
         /// </summary>

@@ -5,10 +5,10 @@ using System.ComponentModel;
 
 namespace DinoDiner.Menu
 {
-    public interface MenuItem : IOrderItem, INotifyPropertyChanged
+    public interface IOrderItem
     {
-        uint Calories { get; }
-        List<string> Ingredients { get; }
-
+        double Price { get;}
+        string Description { get; }
+        string[] Special { get; }
     }
 }

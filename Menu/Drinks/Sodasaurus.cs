@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
 /// <summary>
 /// Sodasaurus
 /// Columba Herrera-Gonzalez
@@ -23,8 +24,11 @@ namespace DinoDiner.Menu
 
     }
 
-    public class Sodasaurus : Drink
+    public class Sodasaurus : Drink, INotifyPropertyChanged
     {
+        public override string Description { get { return this.ToString(); } }
+        public override string[] Special { get { return new string[0]; } }
+
         private Size size;
         /// <summary>
         /// Getter and Setter for flavor of the Sodasaurus.
@@ -68,8 +72,13 @@ namespace DinoDiner.Menu
                         Calories = 208;
                         break;
                 }
+                NotifyofPropertyChanged("Size");
+                NotifyofPropertyChanged("Price");
+                NotifyofPropertyChanged("Calories");
             }
         }
+
+
         /// <summary>
         /// Constructor, sets default size to small and ice to true.
         /// </summary>

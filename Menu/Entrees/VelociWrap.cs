@@ -1,11 +1,24 @@
 using System.Collections.Generic;
+using System.ComponentModel;
 /*VelociWrap
  * Columba Herrera-Gonzalez
  */
 namespace DinoDiner.Menu
 {
-    public class VelociWrap : Entree
+    public class VelociWrap : Entree, INotifyPropertyChanged
     {
+        public override string Description { get { return this.ToString(); } }
+        public override string[] Special
+        {
+            get
+            {
+                List<string> special = new List<string>();
+                if (!dressing) special.Add("Hold Dressing");
+                if (!lettuce) special.Add("Hold Lettuce");
+                if (!cheese) special.Add("Hold Cheese");
+                return special.ToArray();
+            }
+        }
         /// <summary>
         /// These booleans adds these ingredients, their default is true.
         /// </summary>
@@ -51,21 +64,24 @@ namespace DinoDiner.Menu
         public void HoldDressing()
         {
 			dressing =false;
-		}
+            NotifyofPropertyChanged("Special");
+        }
         /// <summary>
         /// This method checks if the user has declined lettuce on the entree and sets the bool to false.
         /// </summary>
 		public void HoldLettuce()
         {
 			lettuce = false;
-		}
+            NotifyofPropertyChanged("Special");
+        }
         /// <summary>
         /// This method checks if the user has declined cheese on the entree and sets the bool to false.
         /// </summary>
 		public void HoldCheese()
         {
 			cheese = false;
-		}
+            NotifyofPropertyChanged("Special");
+        }
         /// <summary>
         /// Creates a string with the entree name.
         /// </summary>

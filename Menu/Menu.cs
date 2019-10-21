@@ -17,7 +17,7 @@ namespace DinoDiner.Menu
             get
             {
                 List<MenuItem> menuitmes = new List<MenuItem>();
-                menuitmes.Add(new JurrasicJava());
+                menuitmes.Add(new JurassicJava());
                 menuitmes.Add(new Sodasaurus());
                 menuitmes.Add(new Tyrannotea());
                 menuitmes.Add(new Water());
@@ -58,7 +58,7 @@ namespace DinoDiner.Menu
             get
             {
                 List<MenuItem> menuitmes = new List<MenuItem>();
-                menuitmes.Add(new JurrasicJava());
+                menuitmes.Add(new JurassicJava());
                 menuitmes.Add(new Sodasaurus());
                 menuitmes.Add(new Tyrannotea());
                 menuitmes.Add(new Water());

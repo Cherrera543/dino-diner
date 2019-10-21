@@ -1,14 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
 /// <summary>
 /// Tyrannotea
 /// Columba Herrera-Gonzalez
 /// </summary>
 namespace DinoDiner.Menu
 {
-    public class Tyrannotea : Drink
+    public class Tyrannotea : Drink, INotifyPropertyChanged
     {
+        public override string Description { get { return this.ToString(); } }
+        public override string[] Special
+        {
+            get
+            {
+                List<string> special = new List<string>();
+                if (Lemon) special.Add("Add Lemon");
+                if (sweet) special.Add("Make Sweet");
+                return special.ToArray();
+            }
+        }
         private bool sweet;
         private Size size;
         /// <summary>
@@ -35,6 +47,7 @@ namespace DinoDiner.Menu
                         else { Calories = 32; }
                         break;
                 }
+                
             }
         }
         /// <summary>
@@ -79,6 +92,9 @@ namespace DinoDiner.Menu
                         else Calories = 32;
                         break;
                 }
+                NotifyofPropertyChanged("Size");
+                NotifyofPropertyChanged("Price");
+                NotifyofPropertyChanged("Calories");
             }
         }
         /// <summary>
@@ -87,6 +103,7 @@ namespace DinoDiner.Menu
         public void AddLemon()
         {
             Lemon = true;
+            NotifyofPropertyChanged("Special");
         }
         /// <summary>
         /// Method makes boolean true, creates a sweet tea.
@@ -94,6 +111,9 @@ namespace DinoDiner.Menu
         public void MakeSweet()
         {
             Sweet = true;
+            NotifyofPropertyChanged("Special");
+            NotifyofPropertyChanged("Price");
+            NotifyofPropertyChanged("Calories");
         }
         /// <summary>
         /// Constructor, sets default size to small.
@@ -101,8 +121,6 @@ namespace DinoDiner.Menu
         public Tyrannotea()
         {
             Size = Size.Small;
-            Price = .99;
-            Calories = 8;
             Ice = true;
         }
         /// <summary>

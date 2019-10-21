@@ -1,11 +1,14 @@
 using System.Collections.Generic;
+using System.ComponentModel;
 /*PterodactylWings
  * Columba Herrera-Gonzalez
  */
 namespace DinoDiner.Menu
 {
-    public class PterodactylWings: Entree
+    public class PterodactylWings: Entree, INotifyPropertyChanged
     {
+        public override string Description { get { return this.ToString(); } }
+        public override string[] Special { get { return new string[0]; } }
         /// <summary>
         /// This creates and returns a list of ingredients, including the default items, and any that may not have been removed.
         /// </summary>
