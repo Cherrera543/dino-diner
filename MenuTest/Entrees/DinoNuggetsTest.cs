@@ -6,6 +6,42 @@ namespace MenuTest.Entrees
 {
     public class DinoNuggetsUnitTest
     {
+
+        [Theory]
+        [InlineData("Special")]
+        [InlineData("Price")]
+        [InlineData("Calories")]
+        public void AddingNuggetsShouldNotifyOfPropertyChanged(string prop)
+        {
+            DinoNuggets dn = new DinoNuggets();
+            Assert.PropertyChanged(dn, prop, () =>
+            {
+                dn.AddNugget();
+            });
+        }
+        [Theory]
+        [InlineData(1)]
+        [InlineData(2)]
+        [InlineData(3)]
+        [InlineData(16)]
+        public void ShouldHaveSpecialDescription(int extraNuggets)
+        {
+            DinoNuggets dn = new DinoNuggets();
+            for(int i =0; i<extraNuggets; i++)
+            {
+                dn.AddNugget();
+            }
+            Assert.Collection<string>(dn.Special, item =>
+             {
+                 Assert.Equal($"{extraNuggets} Extra Nuggets",item);
+             });
+        }
+        [Fact]
+        public void ShouldHaveEmptySpecialByDefault()
+        {
+            DinoNuggets dn = new DinoNuggets();
+            Assert.Empty(dn.Special);
+        }
         [Fact]
         public void ShouldHaveCorrectDefaultPrice()
         {

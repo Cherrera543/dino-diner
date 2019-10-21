@@ -7,6 +7,64 @@ namespace MenuTest.Entrees
     public class SteakosaurusBurgerUnitTest
     {
         [Fact]
+        public void NotifyofPropertyChanged()
+        {
+            SteakosaurusBurger s = new SteakosaurusBurger();
+            Assert.PropertyChanged(s, "Special", () =>
+             {
+                 s.HoldBun();
+                 s.HoldKetchup();
+                 s.HoldMustard();
+                 s.HoldPickle();
+             });
+        }
+        [Fact]
+        public void ShouldHaveCorrectSpecial()
+        {
+            SteakosaurusBurger s = new SteakosaurusBurger();
+            s.HoldBun();
+            Assert.Collection(s.Special, item =>
+            {
+                Assert.Equal("Hold Bun", item);
+            });
+            s.bun = true;
+            s.HoldKetchup();
+            Assert.Collection(s.Special, item =>
+            {
+                Assert.Equal("Hold Ketchup", item);
+            });
+            s.ketchup = true;
+            s.HoldMustard();
+            Assert.Collection(s.Special, item =>
+            {
+                Assert.Equal("Hold Mustard", item);
+            });
+            s.mustard = true;
+            s.HoldPickle();
+            Assert.Collection(s.Special, item =>
+            {
+                Assert.Equal("Hold Pickle", item);
+            });
+            s.HoldBun();
+            s.HoldKetchup();
+            s.HoldMustard();
+            string[] specials = new string[] { "Hold Bun", "Hold Pickle", "Hold Ketchup", "Hold Mustard" };
+            Assert.Equal(s.Special, specials);
+
+        }
+        [Fact]
+        public void ShouldHaveEmptySpecialDefault()
+        {
+            SteakosaurusBurger sb = new SteakosaurusBurger();
+            Assert.Empty(sb.Special);
+        }
+        [Fact]
+        public void ShouldProvideCorrectDescription()
+        {
+            SteakosaurusBurger sb = new SteakosaurusBurger();
+            Assert.Equal("Steakosaurus Burger", sb.Description);
+        }
+        [Fact]
         public void ShouldHaveCorrectDefaultPrice()
         {
             SteakosaurusBurger sb = new SteakosaurusBurger();

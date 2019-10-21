@@ -5,6 +5,34 @@ namespace MenuTest.Sides
 {
     public class MezzorellaSticksTest
     {
+        [Theory]
+        [InlineData("Size")]
+        [InlineData("Price")]
+        [InlineData("Calories")]
+        public void NotifyofPropertyChange(string prop)
+        {
+            MezzorellaSticks m = new MezzorellaSticks();
+            Assert.PropertyChanged(m, prop, () =>
+            {
+                m.Size = Size.Medium;
+            });
+        }
+        [Fact]
+        public void ShouldHaveEmptySpecialDefault()
+        {
+            MezzorellaSticks ms = new MezzorellaSticks();
+            Assert.Empty(ms.Special);
+        }
+        [Theory]
+        [InlineData(Size.Small)]
+        [InlineData(Size.Medium)]
+        [InlineData(Size.Large)]
+        public void ShouldProvideCorrectDescription(Size size)
+        {
+            MezzorellaSticks ms = new MezzorellaSticks();
+            ms.Size = size;
+            Assert.Equal($"{size} Mezzorella Sticks", ms.Description);
+        }
         [Fact]
         public void ShouldHaveCorrectDefaultPrice()
         {

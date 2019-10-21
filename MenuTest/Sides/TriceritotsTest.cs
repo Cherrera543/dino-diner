@@ -5,6 +5,34 @@ namespace MenuTest.Sides
 {
     public class TriceritotsTest
     {
+        [Theory]
+        [InlineData("Size")]
+        [InlineData("Price")]
+        [InlineData("Calories")]
+        public void NotifyofPropertyChange(string prop)
+        {
+            Triceritots t = new Triceritots();
+            Assert.PropertyChanged(t, prop, () =>
+            {
+                t.Size = Size.Medium;
+            });
+        }
+        [Fact]
+        public void ShouldHaveEmptySpecialDefault()
+        {
+            Triceritots t = new Triceritots();
+            Assert.Empty(t.Special);
+        }
+        [Theory]
+        [InlineData(Size.Small)]
+        [InlineData(Size.Medium)]
+        [InlineData(Size.Large)]
+        public void ShouldProvideCorrectDescription(Size size)
+        {
+            Triceritots tt = new Triceritots();
+            tt.Size = size;
+            Assert.Equal($"{size} Triceritots", tt.Description);
+        }
         [Fact]
         public void ShouldHaveCorrectDefaultPrice()
         {

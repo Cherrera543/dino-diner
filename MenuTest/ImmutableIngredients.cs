@@ -20,7 +20,7 @@ namespace MenuTest
         [InlineData(typeof(MezzorellaSticks))]
         [InlineData(typeof(Tyrannotea))]
         [InlineData(typeof(Sodasaurus))]
-        [InlineData(typeof(JurrasicJava))]
+        [InlineData(typeof(JurassicJava))]
         [InlineData(typeof(Water))]
         public void IngredientsShouldBeImmutable(Type type)
         {

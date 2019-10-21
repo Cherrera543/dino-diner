@@ -5,6 +5,34 @@ namespace MenuTest.Sides
 {
     public class FryceritopsTest
     {
+        [Theory]
+        [InlineData("Size")]
+        [InlineData("Price")]
+        [InlineData("Calories")]
+        public void NotifyofPropertyChange(string prop)
+        {
+            Fryceritops f = new Fryceritops();
+            Assert.PropertyChanged(f, prop, () =>
+            {
+                f.Size = Size.Medium;
+            });
+        }
+        [Fact]
+        public void ShouldHaveEmptySpecialDefault()
+        {
+            Fryceritops f = new Fryceritops();
+            Assert.Empty(f.Special);
+        }
+        [Theory]
+        [InlineData(Size.Small)]
+        [InlineData(Size.Medium)]
+        [InlineData(Size.Large)]
+        public void ShouldProvideCorrectDescription(Size size)
+        {
+            Fryceritops ft = new Fryceritops();
+            ft.Size = size;
+            Assert.Equal($"{size} Friceritops", ft.Description);
+        }
         [Fact]
         public void ShouldHaveCorrectDefaultPrice()
         {

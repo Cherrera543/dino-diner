@@ -7,6 +7,18 @@ namespace MenuTest.Entrees
     public class PterodactylWingsUnitTest
     {
         [Fact]
+        public void ShouldHaveEmptySpecialDefault()
+        {
+            PterodactylWings pw = new PterodactylWings();
+            Assert.Empty(pw.Special);
+        }
+        [Fact]
+        public void ShouldProvideCorrectDescription()
+        {
+            PterodactylWings pw = new PterodactylWings();
+            Assert.Equal("Pterodactyl Wings", pw.Description);
+        }
+        [Fact]
         public void ShouldHaveCorrectDefaultPrice()
         {
             PterodactylWings pw = new PterodactylWings();

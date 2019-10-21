@@ -8,6 +8,41 @@ namespace MenuTest.Drinks
 {
     public class WaterTest
     {
+        [Fact]
+        public void NotifyofPropertyChange()
+        {
+            Water w = new Water();
+            Assert.PropertyChanged(w, "Size", () =>
+            {
+                w.Size = Size.Medium;
+            });
+        }
+        [Fact]
+        public void ShouldHaveCorrectSpecial()
+        {
+            Water w = new Water();
+            w.AddLemon();
+            Assert.Collection(w.Special, item =>
+            {
+                Assert.Equal("Add Lemon", item);
+            });
+        }
+        [Fact]
+        public void ShouldHaveEmptySpecialDefault()
+        {
+            Water w = new Water();
+            Assert.Empty(w.Special);
+        }
+        [Theory]
+        [InlineData(Size.Small)]
+        [InlineData(Size.Medium)]
+        [InlineData(Size.Large)]
+        public void ShouldProvideCorrectDescription(Size size)
+        {
+            Water water = new Water();
+            water.Size = size;
+            Assert.Equal($"{size} Water", water.Description);
+        }
         //Correct default price
         [Fact]
         public void CorrectDefaultPrice()

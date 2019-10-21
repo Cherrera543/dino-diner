@@ -7,6 +7,55 @@ namespace MenuTest.Entrees
     public class VelociWrapUnitTest
     {
         [Fact]
+        public void NotifyofPropertyChange()
+        {
+            VelociWrap v = new VelociWrap();
+            Assert.PropertyChanged(v, "Special", () =>
+             {
+                 v.HoldCheese();
+                 v.HoldDressing();
+                 v.HoldLettuce();
+             });
+        }
+        [Fact]
+        public void ShouldHaveCorrectSpecials()
+        {
+            VelociWrap v = new VelociWrap();
+            v.HoldCheese();
+            Assert.Collection(v.Special, item =>
+            {
+                Assert.Equal("Hold Cheese", item);
+            });
+            v.cheese = true;
+            v.HoldDressing();
+            Assert.Collection(v.Special, item =>
+            {
+                Assert.Equal("Hold Dressing", item);
+            });
+            v.dressing = true;
+            v.HoldLettuce();
+            Assert.Collection(v.Special, item =>
+            {
+                Assert.Equal("Hold Lettuce", item);
+            });
+            v.HoldCheese();
+            v.HoldDressing();
+            string[] specials = new string[] { "Hold Dressing", "Hold Lettuce", "Hold Cheese" };
+            Assert.Equal(v.Special, specials);
+        }
+        [Fact]
+        public void ShouldHaveEmptySpecialDefault()
+        {
+            VelociWrap vw = new VelociWrap();
+            Assert.Empty(vw.Special);
+        }
+        [Fact]
+        public void ShouldProvideCorrectDescription()
+        {
+            VelociWrap vw = new VelociWrap();
+            Assert.Equal("Veloci-Wrap", vw.Description);
+        }
+        [Fact]
         public void ShouldHaveCorrectDefaultPrice()
         {
             VelociWrap vw = new VelociWrap();

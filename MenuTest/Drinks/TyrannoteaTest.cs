@@ -8,6 +8,58 @@ namespace MenuTest.Drinks
 {
     public class TyrannoteaTest
     {
+        [Theory]
+        [InlineData("Size")]
+        [InlineData("Price")]
+        [InlineData("Calories")]
+        public void NotifyofPropertyChange(string prop)
+        {
+            Tyrannotea t = new Tyrannotea();
+            Assert.PropertyChanged(t, prop, () =>
+            {
+                t.Size = Size.Medium;
+            });
+        }
+        [Fact]
+        public void ShouldHaveCorrectSpecials()
+        {
+            Tyrannotea t = new Tyrannotea();
+            t.AddLemon();
+            Assert.Collection(t.Special, item =>
+            {
+                Assert.Equal("Add Lemon", item);
+            });
+            t.Lemon = false;
+            t.MakeSweet();
+            Assert.Collection(t.Special, item =>
+            {
+                Assert.Equal("Make Sweet", item);
+            });
+            t.AddLemon();
+            string[] specials = new string[] { "Add Lemon", "Make Sweet" };
+            Assert.Equal(t.Special, specials);
+        }
+        [Fact]
+        public void ShouldHaveEmptySpecialDefault()
+        {
+            Tyrannotea t = new Tyrannotea();
+            Assert.Empty(t.Special);
+        }
+        [Theory]
+        [InlineData(Size.Small, false)]
+        [InlineData(Size.Medium, false)]
+        [InlineData(Size.Large, false)]
+        [InlineData(Size.Small, true)]
+        [InlineData(Size.Medium, true)]
+        [InlineData(Size.Large, true)]
+        public void ShouldProvideCorrectDescription(Size size, bool sweet)
+        {
+            Tyrannotea tea = new Tyrannotea();
+            tea.Size = size;
+            tea.Sweet = sweet;
+            if (sweet) Assert.Equal($"{size} Sweet Tyrannotea", tea.Description);
+            else Assert.Equal($"{size} Tyrannotea", tea.Description);
+        }
         //Correct default price
         [Fact]
         public void hasCorrectDefaultPrice()
@@ -83,7 +135,7 @@ namespace MenuTest.Drinks
         {
             Tyrannotea tea = new Tyrannotea();
             tea.Size = Size.Medium;
-            Assert.Equal<Size>(Size.Small, tea.Size);
+            Assert.Equal<Size>(Size.Medium, tea.Size);
         }
         //Correct price after setting to medium
         [Fact]

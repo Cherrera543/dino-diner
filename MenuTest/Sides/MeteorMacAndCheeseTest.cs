@@ -5,6 +5,34 @@ namespace MenuTest.Sides
 {
     public class MeteorMacAndCheeseTest
     {
+        [Theory]
+        [InlineData("Size")]
+        [InlineData("Price")]
+        [InlineData("Calories")]
+        public void NotifyofPropertyChange(string prop)
+        {
+            MeteorMacAndCheese m = new MeteorMacAndCheese();
+            Assert.PropertyChanged(m, prop, () =>
+            {
+                m.Size = Size.Medium;
+            });
+        }
+        [Fact]
+        public void ShouldHaveEmptySpecialDefault()
+        {
+            MeteorMacAndCheese mc = new MeteorMacAndCheese();
+            Assert.Empty(mc.Special);
+        }
+        [Theory]
+        [InlineData(Size.Small)]
+        [InlineData(Size.Medium)]
+        [InlineData(Size.Large)]
+        public void ShouldProvideCorrectDescription(Size size)
+        {
+            MeteorMacAndCheese mmc = new MeteorMacAndCheese();
+            mmc.Size = size;
+            Assert.Equal($"{size} Meteor Mac and Cheese", mmc.Description);
+        }
         [Fact]
         public void ShouldHaveCorrectDefaultPrice()
         {
