@@ -23,6 +23,27 @@ namespace PointOfSale
         public SideSelection()
         {
             InitializeComponent();
+            DataContext = null;
+        }
+        public SideSelection(Side side)
+        {
+            InitializeComponent();
+            DataContext = side;
+        }
+
+        void SetSizeButtonEnabled(bool isEnabled)
+        {
+            MakeLarge.IsEnabled = isEnabled;
+            MakeMedium.IsEnabled = isEnabled;
+            MakeSmall.IsEnabled = isEnabled;
+        }
+        void SetSize(Size size)
+        {
+
+        }
+        protected void OnClickLarge(object sender, RoutedEventArgs e)
+        {
+            SetSize(DinoDiner.Menu.Size.Large);
         }
     }
 }

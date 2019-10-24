@@ -17,12 +17,12 @@
                 <Setter Property="FontWeight" Value="Bold"/>
             </Style>
         </Grid.Resources>
-        <Button Content="Brontowurst" Grid.ColumnSpan="3" Margin="118,0,107,36.8" Width="Auto" VerticalAlignment="Bottom" Grid.RowSpan="2">
+        <Button  Content="Brontowurst" Grid.ColumnSpan="3" Margin="118,0,107,36.8" Width="Auto" VerticalAlignment="Bottom" Grid.RowSpan="2">
             <Button.Background>
                 <ImageBrush ImageSource="Assets/DinoDiner-01.png"/>
             </Button.Background>
         </Button>
-        <Button Grid.Column="2" Content="Dino-Nuggets" Grid.ColumnSpan="2" Margin="44.8,0,46.6,38.8" Height="125" Width="Auto" VerticalAlignment="Bottom" Grid.RowSpan="2">
+        <Button  Grid.Column="2" Content="Dino-Nuggets" Grid.ColumnSpan="2" Margin="44.8,0,46.6,38.8" Height="125" Width="Auto" VerticalAlignment="Bottom" Grid.RowSpan="2">
             <Button.Background>
                 <ImageBrush ImageSource="Assets/DinoDiner-02.png"/>
             </Button.Background>
@@ -32,17 +32,18 @@
                 <ImageBrush ImageSource="Assets/DinoDiner-05.png"/>
             </Button.Background>
         </Button>
-        <Button Grid.Column="3" Grid.Row ="1" Content="T Rex King Burger" Margin="8,0,84.2,19.6" Grid.ColumnSpan="2" VerticalAlignment="Bottom" Width="Auto" Grid.RowSpan="2">
+        <Button  Grid.Column="3" Grid.Row ="1" Content="T Rex King Burger" Margin="8,0,84.2,19.6" Grid.ColumnSpan="2" VerticalAlignment="Bottom" Width="Auto" Grid.RowSpan="2">
             <Button.Background>
                 <ImageBrush ImageSource="Assets/DinoDiner-06.png"/>
             </Button.Background>
         </Button>
-        <Button Grid.Row="1" Content="Prehistoric PB&amp;J" Grid.ColumnSpan="2" Margin="19,0,73.2,19.6" Width="Auto" VerticalAlignment="Bottom" Grid.RowSpan="2">
+        <Button Grid.Row="1" Grid.ColumnSpan="2" Margin="25,80,67,20" Width="Auto" VerticalAlignment="Stretch" Grid.RowSpan="2">
+            <TextBox Background="Transparent" >Prehistoric PB&amp;J</TextBox>
             <Button.Background>
                 <ImageBrush ImageSource="Assets/DinoDiner-03.png"/>
             </Button.Background>
         </Button>
-        <Button Grid.Row="2" Content="Pterodactyl Wings" Grid.ColumnSpan="3" Margin="116,99.2,109,0" Width="Auto" VerticalAlignment="Top" Grid.RowSpan="2">
+        <Button  Grid.Row="2" Content="Pterodactyl Wings" Grid.ColumnSpan="3" Margin="116,99.2,109,0" Width="Auto" VerticalAlignment="Top" Grid.RowSpan="2">
             <Button.Background>
                 <ImageBrush ImageSource="Assets/DinoDiner-04.png"/>
             </Button.Background>
