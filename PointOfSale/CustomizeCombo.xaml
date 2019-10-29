@@ -23,9 +23,9 @@
         <Label Margin="379,0,0,166" Grid.Row="1" FontSize="24" Height="39" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="83" FontWeight="Bold" FontStyle="Italic">Drinks</Label>
         <Button Click="SideSelect" Grid.Row ="1" Content="Friceritops" Margin="87,0,0,36" HorizontalAlignment="Left" VerticalAlignment="Bottom"></Button>
         <Button Click="DrinkSelect" Grid.Row ="1" Content="Sodasaurus" Margin="333,0,0,36" HorizontalAlignment="Left" VerticalAlignment="Bottom"></Button>
-        <Button Grid.Row="2" Height ="100" Content="Small" Margin="10,26,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"></Button>
-        <Button Grid.Row="2" Height ="100" Content="Medium" Margin="210,26,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"></Button>
-        <Button Grid.Row="2" Height ="100" Content="Large" Margin="409,26,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"></Button>
+        <Button Click="MakeSmall" Grid.Row="2" Height ="100" Content="Small" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"></Button>
+        <Button Click="MakeMedium" Grid.Row="2" Height ="100" Content="Medium" Margin="212,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"></Button>
+        <Button Click="MakeLarge" Grid.Row="2" Height ="100" Content="Large" Margin="409,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"></Button>
         <Grid.RowDefinitions>
             <RowDefinition Height="0*"/>
             <RowDefinition Height="2*"/>

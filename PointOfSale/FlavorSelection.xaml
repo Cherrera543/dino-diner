@@ -18,23 +18,23 @@
                 <Setter Property="FontSize" Value="22"/>
             </Style>
         </Grid.Resources>
-        <Button Content="Cherry" Grid.ColumnSpan="3" Margin="118,0,107,36.8" Width="Auto" VerticalAlignment="Bottom" Grid.RowSpan="2"/>
+        <Button Click="CherryClick" Content="Cherry" Grid.ColumnSpan="3" Margin="118,0,107,36.8" Width="Auto" VerticalAlignment="Bottom" Grid.RowSpan="2"/>
 
-        <Button Grid.Column="2" Content="Chocolate" Grid.ColumnSpan="2" Margin="44.8,0,46.6,38.8" Height="125" Width="Auto" VerticalAlignment="Bottom" Grid.RowSpan="2"/>
+        <Button Click="ChocoClick" Grid.Column="2" Content="Chocolate" Grid.ColumnSpan="2" Margin="44.8,0,46.6,38.8" Height="125" Width="Auto" VerticalAlignment="Bottom" Grid.RowSpan="2"/>
 
-        <Button  Grid.Column="1" Grid.Row="1" Content="Cola" Grid.ColumnSpan="2" Margin="79.4,0,12,19.6" Width="Auto" VerticalAlignment="Bottom" Grid.RowSpan="2"/>
-
-
-        <Button Grid.Column="3" Grid.Row ="1" Content="Lime" Margin="8,0,84.2,19.6" Grid.ColumnSpan="2" VerticalAlignment="Bottom" Width="Auto" Grid.RowSpan="2"/>
+        <Button Click="ColaClick" Grid.Column="1" Grid.Row="1" Content="Cola" Grid.ColumnSpan="2" Margin="79.4,0,12,19.6" Width="Auto" VerticalAlignment="Bottom" Grid.RowSpan="2"/>
 
 
-        <Button Grid.Row="1" Content="Orange" Grid.ColumnSpan="2" Margin="19,0,73.2,19.6" Width="Auto" VerticalAlignment="Bottom" Grid.RowSpan="2"/>
+        <Button Click="LimeClick" Grid.Column="3" Grid.Row ="1" Content="Lime" Margin="8,0,84.2,19.6" Grid.ColumnSpan="2" VerticalAlignment="Bottom" Width="Auto" Grid.RowSpan="2"/>
 
 
-        <Button Grid.Row="2" Content="Root Beer" Grid.ColumnSpan="3" Margin="116,99.2,109,0" Width="Auto" VerticalAlignment="Top" Grid.RowSpan="2"/>
+        <Button Click="OrangeClick" Grid.Row="1" Content="Orange" Grid.ColumnSpan="2" Margin="19,0,73.2,19.6" Width="Auto" VerticalAlignment="Bottom" Grid.RowSpan="2"/>
 
 
-        <Button Grid.Column ="2" Grid.Row="2" Content="Vanilla" Grid.ColumnSpan="2" Margin="42.8,99.2,48.6,0" VerticalAlignment="Top" Width="Auto" Grid.RowSpan="2"/>
+        <Button Click="RootClick" Grid.Row="2" Content="Root Beer" Grid.ColumnSpan="3" Margin="116,99.2,109,0" Width="Auto" VerticalAlignment="Top" Grid.RowSpan="2"/>
+
+
+        <Button Click="VanillaClick" Grid.Column ="2" Grid.Row="2" Content="Vanilla" Grid.ColumnSpan="2" Margin="42.8,99.2,48.6,0" VerticalAlignment="Top" Width="Auto" Grid.RowSpan="2"/>
 
 
         <Grid.ColumnDefinitions>

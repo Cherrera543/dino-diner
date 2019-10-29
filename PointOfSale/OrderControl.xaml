@@ -1,30 +1,62 @@
-﻿<Page x:Class="PointOfSale.OrderControl"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:PointOfSale"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="OrderControl">
-    <ListBox Grid.Row="1"
-             ItemsSource="{Binding Path=Items, UpdateSourceTrigger=PropertyChanged}"
-             IsSynchronizedWithCurrentItem="True"
-             SelectionChanged="OnSelectionChanged"
-             DataContextChanged="OnDataContextChanged"
-        >
-        <ListBox.ItemTemplate>
-            <DataTemplate>
-                <Grid MinWidth="180">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="20"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Text ="{Binding Path = Description}"/>
-                    <Button Grid.Column="1" Click="OnRemoveOrderItem">X</Button>
-                </Grid>
-            </DataTemplate>
-        </ListBox.ItemTemplate>
-    </ListBox>
-
-</Page>
+﻿<UserControl x:Class="PointOfSale.OrderControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PointOfSale"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="200">
+    <Border BorderThickness=".5,0,0,0" BorderBrush="Black">
+        <Grid Background="LightSteelBlue">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="22.5"/>
+                <RowDefinition Height="8*"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Row="0" Grid.ColumnSpan="2">
+                <TextBlock TextAlignment="Center">
+                Order
+                </TextBlock>
+            </Border>
+            <ListBox Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding Path=Items}"
+                     Background="Transparent" Name="itemsList"
+                     IsSynchronizedWithCurrentItem="True">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Width="190">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="20"/>
+                                    <ColumnDefinition Width="20"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock TextWrapping="Wrap" Text="{Binding Path=Description}" TextAlignment="Left" HorizontalAlignment="Left" Grid.Column="0"/>
+                                <Button Click="OnRemoveOrderItem" Height="20" FontSize="12" Background="DarkRed" Foreground="White" Grid.Column="1">
+                                    X
+                                </Button>
+                            </Grid>
+                            <ListBox ItemsSource="{Binding Path=Special}" Margin="15,0,0,0" FontSize="14" Background="Transparent" BorderThickness="0"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <TextBlock TextWrapping="Wrap" TextAlignment="Right" 
+                       Grid.Row="2" Grid.ColumnSpan="2"
+                       Name="OrderSubtotal" 
+                       Text="{Binding Path=SubtotalCost, StringFormat='Subtotal - {0:c}'}"/>
+            <TextBlock TextWrapping="Wrap" TextAlignment="Right" 
+                       Grid.Row="4" Grid.ColumnSpan="2"
+                       Name="OrderTotal" 
+                       Text="{Binding Path=TotalCost, StringFormat='Total - {0:c}'}"/>
+            <Button Grid.Row="5" Grid.Column="0">Cancel</Button>
+            <Button Grid.Row="5" Grid.Column="1">Pay</Button>
+        </Grid>
+    </Border>
+</UserControl>

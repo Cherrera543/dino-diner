@@ -12,17 +12,18 @@
         <Label Grid.Column="0" FontSize="24" FontWeight="Bold" FontStyle="Italic" Margin="63,0,0,344.6" Height="46" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="89">Drinks</Label>
         <Label Grid.Column="1" FontSize="24" FontWeight="Bold" FontStyle="Italic" Margin="59.6,0,0,344.6" Height="46" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="63">Size</Label>
         <Label Grid.Column="2" FontSize="24" FontWeight="Bold" FontStyle="Italic" Margin="46.2,0,0,344.6" Height="46" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="104">Specials</Label>
-        <Button Width="150" Height="100" Margin="24,0,0,244.6" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="24" Grid.Column="1">Small</Button>
-        <Button Width="150" Height="100" Margin="24,0,0,126" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="24" Grid.Column="1">Medium</Button>
-        <Button Width="150" Height="100" Margin="24,0,0,9.6" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="24" Grid.Column="1">Large</Button>
-        <Button Width ="150" Height="80" Grid.Column="0" Margin="31,0,0,264.6" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="22">Sodasaurus</Button>
-        <Button Width ="150" Height="80" Grid.Column="0" Margin="31,0,0,9.6" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="22">Tyrannotea</Button>
-        <Button Width ="150" Height="80" Grid.Column="0" Margin="31,0,0,94.6" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="22">Jurrasic Java</Button>
-        <Button Width ="150" Height="80" Grid.Column="0" Margin="31,0,0,179.6" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="22">Water</Button>
-        <Button Click ="SodaFlavor" Width="150" Height="100" Margin="24,0,0,244.6" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="24" Grid.Column="2">
-            <TextBlock FontSize="22">Sweet/<LineBreak/>Decaf/<LineBreak/>Flavor</TextBlock></Button>
-        <Button Width="150" Height="100" Margin="24,0,0,126" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="24" Grid.Column="2">AddLemon</Button>
-        <Button Width="150" Height="100" Margin="24,0,0,9.6" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="24" Grid.Column="2">Hold Ice</Button>
+        <Button Click="Button_Click" Width="150" Height="100" Margin="24,0,0,244.6" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="24" Grid.Column="1">Small</Button>
+        <Button Click="Button_Click" Width="150" Height="100" Margin="24,0,0,126" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="24" Grid.Column="1">Medium</Button>
+        <Button Click="Button_Click" Width="150" Height="100" Margin="24,0,0,9.6" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="24" Grid.Column="1">Large</Button>
+        <Button Click ="DrinkClick" Width ="150" Height="80" Grid.Column="0" Margin="31,0,0,264.6" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="22">Sodasaurus</Button>
+        <Button Click="DrinkClick" Width ="150" Height="80" Grid.Column="0" Margin="31,0,0,9.6" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="22">Tyrannotea</Button>
+        <Button Click="DrinkClick" Width ="150" Height="80" Grid.Column="0" Margin="31,0,0,94.6" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="22">Jurrasic Java</Button>
+        <Button Click="DrinkClick" Width ="150" Height="80" Grid.Column="0" Margin="31,0,0,179.6" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="22">Water</Button>
+        <Button Click="SpecialButton" Name ="SpecialOp1" Width="150" Height="100" Margin="24,0,0,244.6" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="24" Grid.Column="2">
+            <TextBlock FontSize="22">Sweet/<LineBreak/>Decaf/<LineBreak/>Flavor</TextBlock>
+        </Button>
+        <Button Click="SpecialButton" Name="SpecialLemon" Width="150" Height="100" Margin="24,0,0,126" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="24" Grid.Column="2">Add Lemon</Button>
+        <Button Click="SpecialButton" Name="SpecialIce" Width="150" Height="100" Margin="24,0,0,9.6" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="24" Grid.Column="2">Hold Ice</Button>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>

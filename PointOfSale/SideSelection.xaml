@@ -14,14 +14,14 @@
         <Button Name ="MakeLarge" Width="150" Height="100" Margin="24,0,0,244.6" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="24" Grid.Column="1">Small</Button>
         <Button Name ="MakeMedium" Width="150" Height="100" Margin="24,0,0,126" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="24" Grid.Column="1">Medium</Button>
         <Button Name ="MakeSmall" Width="150" Height="100" Margin="24,0,0,9.6" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="24" Grid.Column="1">Large</Button>
-        <Button Width ="150" Height="80" Grid.Column="0" Margin="31,0,0,264.6" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="22">Fryceritops</Button>
-        <Button Width ="150" Height="80" Grid.Column="0" Margin="31,0,0,9.6" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="22">
-            <TextBlock>Meteor Mac <LineBreak/>&amp; Cheese</TextBlock>
+        <Button Click ="Button_Click" Width ="150" Height="80" Grid.Column="0" Margin="31,0,0,264.6" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="22">Fryceritops</Button>
+        <Button Name="Mac" Click="Button_Click" Width ="150" Height="80" Grid.Column="0" Margin="31,0,0,9.6" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="22">
+            
         </Button>
-        <Button Width ="150" Height="80" Grid.Column="0" Margin="31,0,0,94.6" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="22">
-            <TextBlock>Mezzorella <LineBreak/> Sticks</TextBlock>
+        <Button Name="Mezz" Click="Button_Click" Width ="150" Height="80" Grid.Column="0" Margin="31,0,0,94.6" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="22">
+            
         </Button>
-        <Button Width ="150" Height="80" Grid.Column="0" Margin="31,0,0,179.6" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="22">Triceritots</Button>
+        <Button Click="Button_Click" Width ="150" Height="80" Grid.Column="0" Margin="31,0,0,179.6" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="22">Triceritots</Button>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>

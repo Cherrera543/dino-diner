@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DinoDiner.Menu;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +19,7 @@ namespace PointOfSale
     /// <summary>
     /// Interaction logic for OrderControl.xaml
     /// </summary>
-    public partial class OrderControl : Page
+    public partial class OrderControl : UserControl
     {
         public NavigationService NavigationService { get; set; }
         public OrderControl()
@@ -28,9 +29,21 @@ namespace PointOfSale
         }
         public void OnSelectionChanged(object sender, EventArgs e)
         {
-            if(OrderItems.SelectedItem is Side side)
+            if(itemsList.SelectedItem is Side side)
             {
                 NavigationService?.Navigate(new SideSelection(side));
+            }
+            else if(itemsList.SelectedItem is Drink drink)
+            {
+                NavigationService?.Navigate(new DrinkSelection(drink));
+            }
+            else if(itemsList.SelectedItem is Entree entree)
+            {
+                NavigationService?.Navigate(new EntreeSelection(entree));
+            }
+            else if(itemsList.SelectedItem is CretaceousCombo c)
+            {
+                NavigationService?.Navigate(new ComboSelection(c));
             }
         }
 
