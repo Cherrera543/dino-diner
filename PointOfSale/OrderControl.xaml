@@ -21,9 +21,7 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Border Grid.Row="0" Grid.ColumnSpan="2">
-                <TextBlock TextAlignment="Center">
-                Order
-                </TextBlock>
+                <TextBlock TextAlignment="Center" Text="Order"/>
             </Border>
             <ListBox Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding Path=Items}"
                      Background="Transparent" Name="itemsList"
@@ -37,25 +35,27 @@
                                     <ColumnDefinition Width="20"/>
                                     <ColumnDefinition Width="20"/>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock TextWrapping="Wrap" Text="{Binding Path=Description}" TextAlignment="Left" HorizontalAlignment="Left" Grid.Column="0"/>
+                                <TextBlock TextWrapping="Wrap" MouseLeftButtonDown="OnSelectionChanged" Text="{Binding Path=Description}" TextAlignment="Left" HorizontalAlignment="Left" Grid.Column="0">
+                                    <ListBox FontSize="12" ItemsSource="{Binding Path=Special}"  BorderThickness="0" Background="Transparent" Grid.Column ="0"/>
+                                </TextBlock>
                                 <Button Click="OnRemoveOrderItem" Height="20" FontSize="12" Background="DarkRed" Foreground="White" Grid.Column="1">
                                     X
                                 </Button>
                             </Grid>
-                            <ListBox ItemsSource="{Binding Path=Special}" Margin="15,0,0,0" FontSize="14" Background="Transparent" BorderThickness="0"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
             <TextBlock TextWrapping="Wrap" TextAlignment="Right" 
                        Grid.Row="2" Grid.ColumnSpan="2"
-                       Name="OrderSubtotal" 
                        Text="{Binding Path=SubtotalCost, StringFormat='Subtotal - {0:c}'}"/>
             <TextBlock TextWrapping="Wrap" TextAlignment="Right" 
+                       Grid.Row="3" Grid.ColumnSpan="2"
+                       Text="{Binding Path=SalesTaxCosts, StringFormat='Tax - {0:c}'}"/>
+            <TextBlock TextWrapping="Wrap" TextAlignment="Right" 
                        Grid.Row="4" Grid.ColumnSpan="2"
-                       Name="OrderTotal" 
                        Text="{Binding Path=TotalCost, StringFormat='Total - {0:c}'}"/>
-            <Button Grid.Row="5" Grid.Column="0">Cancel</Button>
+            <Button Grid.Row="5" Click ="CancelButton" Grid.Column="0">Cancel</Button>
             <Button Grid.Row="5" Grid.Column="1">Pay</Button>
         </Grid>
     </Border>

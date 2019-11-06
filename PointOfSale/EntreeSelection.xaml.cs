@@ -17,9 +17,6 @@ using DinoDiner.Menu;
 namespace PointOfSale
 {
     
-    /// <summary>
-    /// Interaction logic for EntreeSelection.xaml
-    /// </summary>
     public partial class EntreeSelection : Page
     {
         private Entree entree;
@@ -36,26 +33,26 @@ namespace PointOfSale
         {
             if(DataContext is Order order)
             {
-                order.Items.Add(entree);
+                order.Add(entree);
             }
         }
         private void BrontoClick(object sender, RoutedEventArgs e)
         {
             entree = new Brontowurst();
             AddEntree();
-            NavigationService.Navigate(new MenuCategorySelection());
+            NavigationService.Navigate(new EntreeCustomization(entree));
         }
         private void DinoClick(object sender, RoutedEventArgs e)
         {
             entree = new DinoNuggets();
             AddEntree();
-            NavigationService.Navigate(new MenuCategorySelection());
+            NavigationService.Navigate(new EntreeCustomization(entree));
         }
         private void PrehistoricClick(object sender, RoutedEventArgs e)
         {
             entree = new PrehistoricPBJ();
             AddEntree();
-            NavigationService.Navigate(new MenuCategorySelection());
+            NavigationService.Navigate(new EntreeCustomization(entree));
         }
         private void WingClick(object sender, RoutedEventArgs e)
         {
@@ -67,19 +64,19 @@ namespace PointOfSale
         {
             entree = new SteakosaurusBurger();
             AddEntree();
-            NavigationService.Navigate(new MenuCategorySelection());
+            NavigationService.Navigate(new EntreeCustomization(entree));
         }
         private void TRexClick(object sender, RoutedEventArgs e)
         {
             entree = new TRexKingBurger();
             AddEntree();
-            NavigationService.Navigate(new MenuCategorySelection());
+            NavigationService.Navigate(new EntreeCustomization(entree));
         }
         private void WrapClick(object sender, RoutedEventArgs e)
         {
             entree = new VelociWrap();
             AddEntree();
-            NavigationService.Navigate(new MenuCategorySelection());
+            NavigationService.Navigate(new EntreeCustomization(entree));
         }
     }
 }

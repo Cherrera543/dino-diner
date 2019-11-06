@@ -40,3 +40,11 @@ C:\Users\cherrera543\Downloads\dino-diner-master\dino-diner-master\PointOfSale\o
 C:\Users\cherrera543\Downloads\dino-diner-master\dino-diner-master\PointOfSale\obj\Debug\PointOfSale_MarkupCompile.lref
 C:\Users\cherrera543\Downloads\dino-diner-master\dino-diner-master\PointOfSale\obj\Debug\PointOfSale.exe
 C:\Users\cherrera543\Downloads\dino-diner-master\dino-diner-master\PointOfSale\obj\Debug\PointOfSale.pdb
+C:\Users\colum\Downloads\CIS 400\dino-diner\dino-diner\PointOfSale\obj\Debug\OrderControl.g.cs
+C:\Users\colum\Downloads\CIS 400\dino-diner\dino-diner\PointOfSale\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\colum\Downloads\CIS 400\dino-diner\dino-diner\PointOfSale\bin\Debug\Menu.dll
+C:\Users\colum\Downloads\CIS 400\dino-diner\dino-diner\PointOfSale\bin\Debug\Menu.pdb
+C:\Users\colum\Downloads\CIS 400\dino-diner\dino-diner\PointOfSale\obj\Debug\OrderControl.baml
+C:\Users\colum\Downloads\CIS 400\dino-diner\dino-diner\PointOfSale\obj\Debug\PointOfSale.csproj.CopyComplete
+C:\Users\colum\Downloads\CIS 400\dino-diner\dino-diner\PointOfSale\obj\Debug\EntreeCustomization.g.cs
+C:\Users\colum\Downloads\CIS 400\dino-diner\dino-diner\PointOfSale\obj\Debug\EntreeCustomization.baml

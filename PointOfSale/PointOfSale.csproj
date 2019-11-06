@@ -57,6 +57,9 @@
     <Compile Include="DrinkSelection.xaml.cs">
       <DependentUpon>DrinkSelection.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EntreeCustomization.xaml.cs">
+      <DependentUpon>EntreeCustomization.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FlavorSelection.xaml.cs">
       <DependentUpon>FlavorSelection.xaml</DependentUpon>
     </Compile>
@@ -75,6 +78,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DrinkSelection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EntreeCustomization.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -165,6 +172,12 @@
     <Resource Include="Assets\DinoDiner-13.png" />
     <Resource Include="Assets\DinoDiner-14.png" />
     <Resource Include="Assets\DinoDiner-15.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Menu\Menu.csproj">
+      <Project>{2f5f801d-c838-4c96-a2be-a40c4dffb719}</Project>
+      <Name>Menu</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

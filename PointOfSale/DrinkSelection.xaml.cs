@@ -21,31 +21,75 @@ namespace PointOfSale
     /// </summary>
     public partial class DrinkSelection : Page
     {
-        private CretaceousCombo combo;
         private Drink d;
+        private CretaceousCombo combo;
+        private bool newdrink;
         public DrinkSelection()
         {
             InitializeComponent();
+            Backbutton.Content = "<--Go Back to Main Menu";
+            Backbutton.Click += Mainmenu;
+            newdrink = true;
         }
         public DrinkSelection(Drink dr)
         {
             InitializeComponent();
             d = dr;
+            string name = "";
+            if(d is Sodasaurus s) { name = "Sodasaurus"; }
+            else if (d is Tyrannotea t) { name = "Tyrannotea"; }
+            else if (d is Water w) { name = "Water"; }
+            else if (d is JurassicJava j) { name = "Jurrasic Java"; }
+            ButtonArrange(name);
+            Backbutton.Content = "<--Go Back to Main Menu";
+            Backbutton.Click += Mainmenu;
+            newdrink = false;
         }
         public DrinkSelection(CretaceousCombo c)
         {
             InitializeComponent();
             combo = c;
-            d = combo.Drink;
-            Button b = new Button();
-            b.Content = d.ToString();
-            DrinkClick(b, new RoutedEventArgs());
-
+            Backbutton.Content = "<--Go Back to Custom";
+            newdrink = false;
         }
-        
+
+        public void Mainmenu(object sender, RoutedEventArgs e) { NavigationService.Navigate(new MenuCategorySelection()); }
+        public void Customize(object sender, RoutedEventArgs e) { NavigationService.GoBack(); }
+
+        private void ButtonArrange(string s)
+        {
+            SpecialOp1.IsEnabled = true;
+            SpecialLemon.IsEnabled = true;
+            SpecialIce.IsEnabled = true;
+            SpecialIce.Content = "Hold Ice";
+            SpecialLemon.Content = "Add Lemon";
+            switch (s)
+            {
+
+                case "Sodasaurus":
+                    SpecialOp1.Content = "Flavor";
+                    SpecialLemon.IsEnabled = false;
+                    SpecialIce.IsEnabled = false;
+                    break;
+                case "Tyrannotea":
+                    SpecialOp1.Content = "Sweet";
+                    SpecialIce.IsEnabled = false;
+                    break;
+                case "Jurrasic Java":
+                    SpecialOp1.Content = "Decaf";
+                    SpecialIce.Content = "Add Ice";
+                    SpecialLemon.Content = "Room For\n Cream";
+                    break;
+                case "Water":
+                    SpecialOp1.IsEnabled = false;
+                    SpecialIce.IsEnabled = false;
+                    break;
+            }
+        }
 
         public void DrinkClick(object sender, RoutedEventArgs e)
         {
+            
             Button b = (Button)sender;
             String name = (String)b.Content;
             SpecialOp1.IsEnabled = true;
@@ -56,88 +100,98 @@ namespace PointOfSale
             switch (name)
             {
                 case "Sodasaurus":
-                    d = new Sodasaurus();
-                    
+                    if (combo == null) { d = new Sodasaurus(); }
+                    else { combo.Drink = new Sodasaurus(); }
                     SpecialOp1.Content = "Flavor";
                     SpecialLemon.IsEnabled = false;
                     SpecialIce.IsEnabled = false;
                     break;
                 case "Tyrannotea":
-                    d = new Tyrannotea();
+                    if (combo == null) { d = new Tyrannotea(); }
+                    else { combo.Drink = new Tyrannotea(); }
                     SpecialOp1.Content = "Sweet";
                     SpecialIce.IsEnabled = false;
                     break;
                 case "Water":
-                    d = new Water();
+                    if (combo == null) { d = new Water(); }
+                    else { combo.Drink = new Water(); }
                     SpecialOp1.IsEnabled = false;
                     SpecialIce.IsEnabled = false;
                     break;
                 case "Jurrasic Java":
-                    d = new JurassicJava();
+                    if (combo == null) { d = new JurassicJava(); }
+                    else { combo.Drink = new JurassicJava(); }
                     SpecialOp1.Content = "Decaf";
                     SpecialIce.Content = "Add Ice";
                     SpecialLemon.Content = "Room For\n Cream";
                     break;
             }
-            if (combo == null)
-            {
-                if (DataContext is Order order) order.Items.Add(d);
-            }
+
+            if (DataContext is Order order) { if (newdrink) { order.Add(d); } };
+            
         }
 
         public void SpecialButton(object sender, RoutedEventArgs e)
         {
             Button b = (Button)sender;
             string sp = (string)b.Content;
+            if (combo == null)
+            {
+                switch (sp)
+                {
+                    case "Hold Ice":
+                        d.HoldIce();
+                        break;
+                    case "Add Lemon":
+                        if (d is Tyrannotea t) { t.AddLemon(); }
+                        if (d is Water w) { w.AddLemon(); }
+                        break;
+                    case "Flavor":
+                        if (d is Sodasaurus s) { NavigationService.Navigate(new FlavorSelection(s)); }
+                        break;
+                    case "Sweet":
+                        if (d is Tyrannotea ty) { ty.MakeSweet(); }
+                        break;
+                    case "Decaf":
+                        if (d is JurassicJava j) { j.MakeDecaf(); }
+                        break;
+                    case "Add Ice":
+                        if (d is JurassicJava ju) { ju.AddIce(); }
+                        break;
+                    case "Room For\n Cream":
+                        if (d is JurassicJava jur) { jur.LeaveRoomForCream(); }
+                        break;
+                }
+            }
+            else { SpecialButtonE(sp); }
+        }
+
+        private void SpecialButtonE(string sp)
+        {
             switch (sp)
             {
                 case "Hold Ice":
-                    d.HoldIce();
+                    combo.Drink.HoldIce();
                     break;
                 case "Add Lemon":
-                    if(d is Tyrannotea t)
-                    {
-                        if (t.Lemon) t.Lemon = false;
-                        else t.AddLemon();
-                    }
-                    if(d is Water w)
-                    {
-                        if (w.Lemon) w.Lemon = false;
-                        else w.AddLemon();
-                    }
+                    if (combo.Drink is Tyrannotea t) { t.AddLemon(); }
+                    if (combo.Drink is Water w) { w.AddLemon(); }
                     break;
                 case "Flavor":
-                    if (d is Sodasaurus s) NavigationService.Navigate(new FlavorSelection(s));
+                    if (combo.Drink is Sodasaurus s) { NavigationService.Navigate(new FlavorSelection(s)); }
                     break;
                 case "Sweet":
-                    if(d is Tyrannotea ty)
-                    {
-                        if (ty.Sweet) ty.Sweet = false;
-                        else ty.MakeSweet();
-                    }
+                    if (combo.Drink is Tyrannotea ty) { ty.MakeSweet(); }
                     break;
                 case "Decaf":
-                    if(d is JurassicJava j)
-                    {
-                        if (j.Decaf) j.Decaf = false;
-                        else j.MakeDecaf();
-                    }
+                    if (combo.Drink is JurassicJava j) { j.MakeDecaf(); }
                     break;
                 case "Add Ice":
-                    if(d is JurassicJava ju)
-                    {
-                        if (ju.Ice) ju.Ice = false;
-                        else ju.AddIce();
-                    }
+                    if (combo.Drink is JurassicJava ju) { ju.AddIce(); }
                     break;
                 case "Room For\n Cream":
-                    if(d is JurassicJava jur)
-                    {
-                        if (jur.RoomForCream) jur.RoomForCream = false;
-                        else jur.LeaveRoomForCream();
-                    }
+                    if (combo.Drink is JurassicJava jur) { jur.LeaveRoomForCream(); }
                     break;
-
             }
         }
 
@@ -146,17 +200,33 @@ namespace PointOfSale
             Button b = (Button)sender;
             if (b.Content.Equals("Small"))
             {
-                d.Size = DinoDiner.Menu.Size.Small;
-                if(combo!=null)combo.Drink.Size = DinoDiner.Menu.Size.Small;
-            }else if (b.Content.Equals("Medium"))
-            {
-                d.Size = DinoDiner.Menu.Size.Medium;
-                if(combo!=null)combo.Drink.Size = DinoDiner.Menu.Size.Medium;
-            }else if (b.Content.Equals("Large"))
-            {
-                d.Size = DinoDiner.Menu.Size.Large;
-                if(combo!=null)combo.Drink.Size = DinoDiner.Menu.Size.Large;
+                if (combo == null)
+                {
+                    if (d is Drink a) { a.Size = DinoDiner.Menu.Size.Small; }
+                }
+                else { if(combo.Drink is Drink a) { a.Size = DinoDiner.Menu.Size.Small; } }
             }
+            else if (b.Content.Equals("Medium"))
+            {
+                if (combo == null)
+                {
+                    if (d is Drink a) { a.Size = DinoDiner.Menu.Size.Medium; }
+                }
+                else { if (combo.Drink is Drink a) { a.Size = DinoDiner.Menu.Size.Medium; } }
+            }
+            else if (b.Content.Equals("Large"))
+            {
+                if (combo == null)
+                {
+                    if (d is Drink a) { a.Size = DinoDiner.Menu.Size.Large; }
+                }
+                else { if (combo.Drink is Drink a) { a.Size = DinoDiner.Menu.Size.Large; } }
+            }
+        }
+
+        public void BackButton(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
         }
     }
 }

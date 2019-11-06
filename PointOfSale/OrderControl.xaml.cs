@@ -25,9 +25,18 @@ namespace PointOfSale
         public OrderControl()
         {
             InitializeComponent();
-            MountItemListener();
         }
-        public void OnSelectionChanged(object sender, EventArgs e)
+        public void CancelButton(object sender, RoutedEventArgs e)
+        {
+            if(DataContext is Order order)
+            {
+                foreach(IOrderItem i in order.Items)
+                {
+                    order.Remove(i);
+                }
+            }
+        }
+        public void OnSelectionChanged(object sender, MouseButtonEventArgs e)
         {
             if(itemsList.SelectedItem is Side side)
             {
@@ -47,17 +56,6 @@ namespace PointOfSale
             }
         }
 
-        public void OnDataContextChanged(Object sender, DependencyPropertyChangedEventArgs e)
-        {
-            MountItemListener();
-        }
-        public void MountItemListener()
-        {
-            if(DataContext is Order order)
-            {
-                order.Items.CollectionChanged += OnCollectionChanged;
-            }
-        }
         public void OnCollectionChanged(object sender, EventArgs e)
         {
 
@@ -71,10 +69,11 @@ namespace PointOfSale
                 {
                     if(element.DataContext is IOrderItem item)
                     {
-                        order.Items.Remove(item);
+                        order.Remove(item);
                     }
                 }
             }
         }
+
     }
 }

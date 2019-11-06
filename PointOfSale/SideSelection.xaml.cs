@@ -21,11 +21,14 @@ namespace PointOfSale
     /// </summary>
     public partial class SideSelection : Page
     {
-        private CretaceousCombo combo;
+        //RETURN TO CUSTOMIZE PAGE BUTTON FROM MAIN MENU BUTTON
         private Side side;
+        private CretaceousCombo combo;
         public SideSelection()
         {
             InitializeComponent();
+            Navi.Content = "Back to Main Menu";
+            Navi.Click += MainMenu;
             Mezz.Content = "Mezzorella\n Sticks";
             Mac.Content = "Meteor Mac\n And Cheese";
         }
@@ -33,23 +36,36 @@ namespace PointOfSale
         {
             InitializeComponent();
             this.side = side;
+            Navi.Content = "Back to Main Menu";
+            Navi.Click += MainMenu;
             Mezz.Content = "Mezzorella\n Sticks";
             Mac.Content = "Meteor Mac\n And Cheese";
         }
+
         public SideSelection(CretaceousCombo c)
         {
             InitializeComponent();
             combo = c;
-            side = c.Side;
-            side.Size = c.Side.Size;
+            Navi.Content = "Back to Customize";
+            Navi.Click += Customize;
             Mezz.Content = "Mezzorella\n Sticks";
             Mac.Content = "Meteor Mac\n And Cheese";
         }
-       
+
+        public void MainMenu(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new MenuCategorySelection());
+        }
+
+        public void Customize(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new CustomizeCombo(combo));
+        }
+        
         void SetSize(DinoDiner.Menu.Size size)
         {
-            if (combo != null) combo.Side.Size = size;
-            side.Size = size;
+            if (combo == null) { side.Size = size; }
+            else { combo.Side.Size = size; }
         }
         protected void OnClickLarge(object sender, RoutedEventArgs e)
         {
@@ -61,7 +77,7 @@ namespace PointOfSale
         }
         protected void OnClickSmall(object sender, RoutedEventArgs e)
         {
-            SetSize(DinoDiner.Menu.Size.Medium);
+            SetSize(DinoDiner.Menu.Size.Small);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -71,45 +87,26 @@ namespace PointOfSale
             switch (name)
             {
                 case "Fryceritops":
-                    if (combo != null)
-                    {
-                        combo.Side = new Fryceritops(); 
-                        combo.Side.Size = side.Size;
-                    }
-                    side = new Fryceritops(); 
+                    if (combo == null) { side = new Fryceritops(); }
+                    else { combo.Side = new Fryceritops(); }
                     break;
                 case "Triceritots":
-                    if (combo != null)
-                    {
-                        combo.Side = new Triceritots();
-                        combo.Side.Size = side.Size;
-                    }
-                    side = new Triceritots();
+                    if (combo == null) { side = new Triceritots(); }
+                    else { combo.Side = new Triceritots(); }
                     break;
                 case "Mezzorella\n Sticks":
-                    if (combo != null)
-                    {
-                        combo.Side = new MezzorellaSticks();
-                        combo.Side.Size = side.Size;
-                    }
-                    side = new MezzorellaSticks();
+                    if (combo == null) { side = new MezzorellaSticks(); }
+                    else { combo.Side = new MezzorellaSticks(); }
                     break;
                 default:
-                    if (combo != null)
-                    {
-                        combo.Side = new MeteorMacAndCheese();
-                        combo.Side.Size = side.Size;
-                    }
-                    side = new MeteorMacAndCheese();
+                    if (combo == null) { side = new MeteorMacAndCheese(); }
+                    else { combo.Side = new MeteorMacAndCheese(); }
                     break;
 
             }
             if(DataContext is Order order)
             {
-                if (combo == null)
-                {
-                    order.Items.Add(side);
-                }
+                if (combo == null) { order.Add(side); }
             }
         }
     }

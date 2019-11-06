@@ -22,48 +22,61 @@ namespace PointOfSale
     public partial class ComboSelection : Page
     {
         private CretaceousCombo combo;
+        private Boolean newcombo;
         public ComboSelection()
         {
             InitializeComponent();
+            combo = new CretaceousCombo(new Brontowurst());
+            newcombo = true;
             
         }
         public ComboSelection(CretaceousCombo c)
         {
             InitializeComponent();
             combo = c;
+            newcombo = false;
         }
 
         private void Customize(object sender, RoutedEventArgs e)
         {
             Button b = (Button)sender;
             string name = (String)b.Content;
-            Entree entree;
             switch (name)
             {
                 case "Brontowurst Combo":
-                    entree = new Brontowurst();
+                    if (newcombo) { combo.Entree = new Brontowurst(); }
                     break;
                 case "Dino-Nuggets Combo":
-                    entree = new DinoNuggets();
+                    if (newcombo) { combo.Entree = new DinoNuggets(); }
                     break;
                 case "Prehistoric PB&amp;J Combo":
-                    entree = new PrehistoricPBJ();
+                    if (newcombo) { combo.Entree = new PrehistoricPBJ(); }
                     break;
                 case "Pterodactyl Wings Combo":
-                    entree = new PterodactylWings();
+                    if (newcombo) { combo.Entree = new PterodactylWings(); }
                     break;
-                case "Steakosaurus Burger Combo":
-                    entree = new SteakosaurusBurger();
+                case "Steakasaurus Burger Combo":
+                    if (newcombo) { combo.Entree = new SteakosaurusBurger(); }
                     break;
                 case "T Rex King Burger Combo":
-                    entree = new TRexKingBurger();
+                    if (newcombo) { combo.Entree = new TRexKingBurger(); }
                     break;
                 default:
-                    entree = new VelociWrap();
+                    if(newcombo){ combo.Entree = new VelociWrap(); }
                     break;
             }
-            combo = new CretaceousCombo(entree);
-            NavigationService.Navigate(new CustomizeCombo(combo));
+            if(DataContext is Order o)
+            {
+                if (newcombo)
+                {
+                    o.Add(combo);
+                }
+            }
+            if (combo.Entree is PterodactylWings p)
+            {
+                NavigationService.Navigate(new CustomizeCombo(combo));
+            }
+            else { NavigationService.Navigate(new EntreeCustomization(combo)); }
         }
     }
 }

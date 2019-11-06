@@ -28,7 +28,7 @@ namespace PointOfSale
             combo = c;
             if(DataContext is Order order)
             {
-                order.Items.Add(combo);
+                order.Add(combo);
             }
         }
         private void DrinkSelect(object sender, RoutedEventArgs e)
@@ -52,6 +52,13 @@ namespace PointOfSale
         {
             combo.Size = DinoDiner.Menu.Size.Large;
         }
-
+        private void CustomEntree(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new EntreeCustomization(combo));
+        }
+        private void MainMenu(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new MenuCategorySelection());
+        }
     }
 }
