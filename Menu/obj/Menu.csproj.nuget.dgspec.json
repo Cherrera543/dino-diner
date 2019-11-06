@@ -1,26 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\cherrera543\\Downloads\\dino-diner-master\\dino-diner-master\\Menu\\Menu.csproj": {}
+    "C:\\Users\\colum\\Downloads\\CIS 400\\dino-diner\\dino-diner\\Menu\\Menu.csproj": {}
   },
   "projects": {
-    "C:\\Users\\cherrera543\\Downloads\\dino-diner-master\\dino-diner-master\\Menu\\Menu.csproj": {
+    "C:\\Users\\colum\\Downloads\\CIS 400\\dino-diner\\dino-diner\\Menu\\Menu.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\cherrera543\\Downloads\\dino-diner-master\\dino-diner-master\\Menu\\Menu.csproj",
+        "projectUniqueName": "C:\\Users\\colum\\Downloads\\CIS 400\\dino-diner\\dino-diner\\Menu\\Menu.csproj",
         "projectName": "Menu",
-        "projectPath": "C:\\Users\\cherrera543\\Downloads\\dino-diner-master\\dino-diner-master\\Menu\\Menu.csproj",
-        "packagesPath": "C:\\Users\\cherrera543\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\cherrera543\\Downloads\\dino-diner-master\\dino-diner-master\\Menu\\obj\\",
+        "projectPath": "C:\\Users\\colum\\Downloads\\CIS 400\\dino-diner\\dino-diner\\Menu\\Menu.csproj",
+        "packagesPath": "C:\\Users\\colum\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\colum\\Downloads\\CIS 400\\dino-diner\\dino-diner\\Menu\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\cherrera543\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\colum\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.0"
@@ -51,10 +49,16 @@
             }
           },
           "imports": [
-            "net461"
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
           ],
           "assetTargetFallback": true,
-          "warn": true
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

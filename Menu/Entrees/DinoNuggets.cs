@@ -54,10 +54,10 @@ namespace DinoDiner.Menu
 		public void AddNugget()
         {
 			NumofNugs++;
-            NotifyofPropertyChanged("Special");
 			Price+=.25;
-            NotifyofPropertyChanged("Price");
             Calories += 59;
+            NotifyofPropertyChanged("Special");
+            NotifyofPropertyChanged("Price");
             NotifyofPropertyChanged("Calories");
         }
         /// <summary>

@@ -57,10 +57,11 @@ namespace DinoDiner.Menu
                         Calories = 8;
                         break;
                 }
+                NotifyofPropertyChanged("Description");
                 NotifyofPropertyChanged("Size");
                 NotifyofPropertyChanged("Price");
                 NotifyofPropertyChanged("Calories");
-            }
+            } 
         }
 
         public override string Description { get { return this.ToString(); } }
@@ -82,7 +83,7 @@ namespace DinoDiner.Menu
         /// </summary>
         public void LeaveRoomForCream()
         {
-            RoomForCream = true;
+            RoomForCream = !RoomForCream;
             NotifyofPropertyChanged("Special");
         }
         /// <summary>
@@ -90,7 +91,7 @@ namespace DinoDiner.Menu
         /// </summary>
         public void AddIce()
         {
-            Ice = true;
+            Ice = !Ice;
             NotifyofPropertyChanged("Special");
         }
         /// <summary>
@@ -98,8 +99,9 @@ namespace DinoDiner.Menu
         /// </summary>
         public void MakeDecaf()
         {
-            Decaf = true;
+            Decaf = !Decaf;
             NotifyofPropertyChanged("Special");
+            NotifyofPropertyChanged("Description");
         }
         /// <summary>
         /// Constructor, sets default size to small and ice to false.

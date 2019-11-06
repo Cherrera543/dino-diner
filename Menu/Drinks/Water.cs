@@ -47,7 +47,9 @@ namespace DinoDiner.Menu
             set 
             { 
                 size = value;
+                NotifyofPropertyChanged("Description");
                 NotifyofPropertyChanged("Size");
+                NotifyofPropertyChanged("Price");
             }
         }
         /// <summary>
@@ -55,7 +57,7 @@ namespace DinoDiner.Menu
         /// </summary>
         public void AddLemon()
         {
-            Lemon = true;
+            Lemon = !Lemon;
             NotifyofPropertyChanged("Special");
         }
         /// <summary>

@@ -5,7 +5,7 @@ using System.ComponentModel;
 
 namespace DinoDiner.Menu
 {
-    public interface IOrderItem
+    public interface IOrderItem: INotifyPropertyChanged
     {
         double Price { get;}
         string Description { get; }

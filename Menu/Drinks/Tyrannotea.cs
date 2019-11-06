@@ -47,7 +47,11 @@ namespace DinoDiner.Menu
                         else { Calories = 32; }
                         break;
                 }
-                
+                NotifyofPropertyChanged("Special");
+                NotifyofPropertyChanged("Price");
+                NotifyofPropertyChanged("Calories");
+                NotifyofPropertyChanged("Description");
+
             }
         }
         /// <summary>
@@ -92,6 +96,7 @@ namespace DinoDiner.Menu
                         else Calories = 32;
                         break;
                 }
+                NotifyofPropertyChanged("Description");
                 NotifyofPropertyChanged("Size");
                 NotifyofPropertyChanged("Price");
                 NotifyofPropertyChanged("Calories");
@@ -102,7 +107,7 @@ namespace DinoDiner.Menu
         /// </summary>
         public void AddLemon()
         {
-            Lemon = true;
+            Lemon = !Lemon;
             NotifyofPropertyChanged("Special");
         }
         /// <summary>
@@ -110,10 +115,8 @@ namespace DinoDiner.Menu
         /// </summary>
         public void MakeSweet()
         {
-            Sweet = true;
-            NotifyofPropertyChanged("Special");
-            NotifyofPropertyChanged("Price");
-            NotifyofPropertyChanged("Calories");
+            Sweet = !Sweet;
+            
         }
         /// <summary>
         /// Constructor, sets default size to small.

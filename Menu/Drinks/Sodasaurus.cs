@@ -29,11 +29,22 @@ namespace DinoDiner.Menu
         public override string Description { get { return this.ToString(); } }
         public override string[] Special { get { return new string[0]; } }
 
+        private SodasaurusFlavor flavor;
         private Size size;
         /// <summary>
         /// Getter and Setter for flavor of the Sodasaurus.
         /// </summary>
-        public SodasaurusFlavor Flavor { get; set; }
+        public SodasaurusFlavor Flavor {
+            get
+            {
+                return flavor;
+            }
+            set
+            {
+                flavor = value;
+                NotifyofPropertyChanged("Description");
+            } 
+        }
         /// <summary>
         /// Override of ingredients list, includes all base ingredients.
         /// </summary>
@@ -72,6 +83,7 @@ namespace DinoDiner.Menu
                         Calories = 208;
                         break;
                 }
+                NotifyofPropertyChanged("Description");
                 NotifyofPropertyChanged("Size");
                 NotifyofPropertyChanged("Price");
                 NotifyofPropertyChanged("Calories");
