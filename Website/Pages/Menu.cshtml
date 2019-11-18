@@ -1,0 +1,108 @@
+﻿@page
+@model Website.Pages.MenuModel
+@{
+    ViewData["Title"] = "Menu";
+}
+<img src="https://k-state.instructure.com/courses/83099/files/10852332/preview" alt="logo" />
+<h1>Menu</h1>
+
+<h2>Combos</h2>
+<h3 style="font-size: 14px; ">Each combo comes with a side of Fryceritops and a Sodasaurus of any flavor!</h3>
+@for (int i = 0; i < Model.menu.AvailableCombos.Count; i++)
+{
+    <div class="menu-item">
+        <p style="font-weight: bold; margin-bottom: 0px; margin-top: 8px">
+            @Model.menu.AvailableCombos.ElementAt(i): @String.Format("{0:C}", Model.menu.AvailableCombos.ElementAt(i).Price)
+        </p>
+
+        <p style="padding-left: 40px; margin-top: 0px;">
+            Calories - @Model.menu.AvailableCombos.ElementAt(i).Calories
+            <br />
+            Ingredients -
+            @for (int j = 0; j < Model.menu.AvailableCombos.ElementAt(i).Ingredients.Count; j++)
+            {
+
+                @Model.menu.AvailableCombos.ElementAt(i).Ingredients.ElementAt(j)
+                if (j < Model.menu.AvailableCombos.ElementAt(i).Ingredients.Count - 1)
+                {
+                    @:,&nbsp;
+                }
+            }
+
+        </p>
+    </div>
+}
+<h2>Entrees</h2>
+@for (int i = 0; i < Model.menu.AvailableEntrees.Count; i++)
+{
+    <div class="menu-item">
+        <p style="font-weight: bold; margin-bottom: 0px; margin-top: 8px">
+            @Model.menu.AvailableEntrees.ElementAt(i): @String.Format("{0:C}", Model.menu.AvailableEntrees.ElementAt(i).Price)
+        </p>
+
+        <p style="padding-left: 40px; margin-top: 0px;">
+            Calories - @Model.menu.AvailableEntrees.ElementAt(i).Calories
+            <br />
+            Ingredients -
+            @for (int j = 0; j < Model.menu.AvailableEntrees.ElementAt(i).Ingredients.Count; j++)
+            {
+                
+                @Model.menu.AvailableEntrees.ElementAt(i).Ingredients.ElementAt(j)
+                if (j < Model.menu.AvailableEntrees.ElementAt(i).Ingredients.Count - 1)
+                {
+                    @:,&nbsp;
+                }
+            }
+        </p>
+    </div>
+}
+<h2>Sides</h2>
+@for (int i = 0; i < Model.menu.AvailableSide.Count; i++)
+{
+    <div class="menu-item">
+        <p style="font-weight: bold; margin-bottom: 0px; margin-top: 8px">
+            @Model.menu.AvailableSide.ElementAt(i).ToString().Substring(6): @String.Format("{0:C}", Model.menu.AvailableSide.ElementAt(i).Price)
+        </p>
+
+        <p style="padding-left: 40px; margin-top: 0px;">
+            Calories - @Model.menu.AvailableSide.ElementAt(i).Calories
+            <br />
+            Ingredients -
+            @for (int j = 0; j < Model.menu.AvailableSide.ElementAt(i).Ingredients.Count; j++)
+            {
+
+
+                @Model.menu.AvailableSide.ElementAt(i).Ingredients.ElementAt(j)
+                if (j < Model.menu.AvailableSide.ElementAt(i).Ingredients.Count - 1)
+                {
+                    @:,&nbsp;
+                }
+                
+            }
+        </p>
+    </div>
+}
+<h2>Drinks</h2>
+@for(int i =0; i<Model.menu.AvailableDrinks.Count; i++)
+{
+<div class="menu-item">
+    <p style="font-weight: bold; margin-bottom: 0px; margin-top: 8px">
+    @Model.menu.AvailableDrinks.ElementAt(i).ToString().Substring(6): @String.Format("{0:C}", Model.menu.AvailableDrinks.ElementAt(i).Price)
+        </p>
+    
+    <p style="padding-left: 40px; margin-top: 0px;">
+        Calories - @Model.menu.AvailableDrinks.ElementAt(i).Calories
+        <br />
+        Ingredients -
+        @for (int j = 0; j < Model.menu.AvailableDrinks.ElementAt(i).Ingredients.Count; j++)
+        {
+
+            @Model.menu.AvailableDrinks.ElementAt(i).Ingredients.ElementAt(j).ToString()
+            if (j < Model.menu.AvailableDrinks.ElementAt(i).Ingredients.Count - 1)
+            {
+                @:,&nbsp;
+            }
+        }
+    </p>
+</div>
+}
