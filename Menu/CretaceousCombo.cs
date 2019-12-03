@@ -9,7 +9,7 @@ namespace DinoDiner.Menu
     /// <summary>
     /// A class representing a combo meal
     /// </summary>
-    public class CretaceousCombo : IOrderItem, INotifyPropertyChanged
+    public class CretaceousCombo : IOrderItem, INotifyPropertyChanged, MenuItem
     {
         public string Description { get { return this.ToString(); } }
         public string[] Special

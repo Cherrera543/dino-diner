@@ -68,11 +68,11 @@ namespace DinoDiner.Menu
         /// <summary>
         /// Creates a list with every available entree.
         /// </summary>
-        public List<Entree> AvailableEntrees
+        public List<MenuItem> AvailableEntrees
         {
             get
             {
-                List<Entree> menuitmes = new List<Entree>();
+                List<MenuItem> menuitmes = new List<MenuItem>();
                 menuitmes.Add(new Brontowurst());
                 menuitmes.Add(new DinoNuggets());
                 menuitmes.Add(new PrehistoricPBJ());
@@ -86,11 +86,11 @@ namespace DinoDiner.Menu
         /// <summary>
         /// Creates a list with every combo made by every entree.
         /// </summary>
-        public List<CretaceousCombo> AvailableCombos
+        public List<MenuItem> AvailableCombos
         {
             get
             {
-                List<CretaceousCombo> AvailableCombos = new List<CretaceousCombo>();
+                List<MenuItem> AvailableCombos = new List<MenuItem>();
                 foreach(Entree m in AvailableEntrees)
                 {
                     AvailableCombos.Add(new CretaceousCombo(m));
@@ -98,7 +98,30 @@ namespace DinoDiner.Menu
                 return AvailableCombos;
             }
         }
-
+        public List<String> PossibleIngredients
+        {
+            get
+            {
+                List<String> pos = new List<String>();
+                foreach (MenuItem m in AvailableCombos)
+                {
+                    foreach (String i in m.Ingredients) { if (!pos.Contains(i)) { pos.Add(i); } }
+                }
+                foreach (MenuItem m in AvailableEntrees)
+                {
+                    foreach (String i in m.Ingredients) { if (!pos.Contains(i)) { pos.Add(i); } }
+                }
+                foreach (MenuItem m in AvailableSide)
+                {
+                    foreach (String i in m.Ingredients) { if (!pos.Contains(i)) { pos.Add(i); } }
+                }
+                foreach (MenuItem m in AvailableDrinks)
+                {
+                    foreach (String i in m.Ingredients) { if (!pos.Contains(i)) { pos.Add(i); } }
+                }
+                return pos;
+            }
+        }
         /// <summary>
         /// Creates a stringbuilder that contains the name of every menu item
         /// </summary>
