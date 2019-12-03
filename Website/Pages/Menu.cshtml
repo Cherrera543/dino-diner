@@ -6,103 +6,173 @@
 <img src="https://k-state.instructure.com/courses/83099/files/10852332/preview" alt="logo" />
 <h1>Menu</h1>
 
-<h2>Combos</h2>
-<h3 style="font-size: 14px; ">Each combo comes with a side of Fryceritops and a Sodasaurus of any flavor!</h3>
-@for (int i = 0; i < Model.menu.AvailableCombos.Count; i++)
-{
-    <div class="menu-item">
-        <p style="font-weight: bold; margin-bottom: 0px; margin-top: 8px">
-            @Model.menu.AvailableCombos.ElementAt(i): @String.Format("{0:C}", Model.menu.AvailableCombos.ElementAt(i).Price)
-        </p>
 
-        <p style="padding-left: 40px; margin-top: 0px;">
-            Calories - @Model.menu.AvailableCombos.ElementAt(i).Calories
-            <br />
-            Ingredients -
-            @for (int j = 0; j < Model.menu.AvailableCombos.ElementAt(i).Ingredients.Count; j++)
-            {
-
-                @Model.menu.AvailableCombos.ElementAt(i).Ingredients.ElementAt(j)
-                if (j < Model.menu.AvailableCombos.ElementAt(i).Ingredients.Count - 1)
-                {
-                    @:,&nbsp;
-                }
-            }
-
-        </p>
-    </div>
-}
-<h2>Entrees</h2>
-@for (int i = 0; i < Model.menu.AvailableEntrees.Count; i++)
-{
-    <div class="menu-item">
-        <p style="font-weight: bold; margin-bottom: 0px; margin-top: 8px">
-            @Model.menu.AvailableEntrees.ElementAt(i): @String.Format("{0:C}", Model.menu.AvailableEntrees.ElementAt(i).Price)
-        </p>
-
-        <p style="padding-left: 40px; margin-top: 0px;">
-            Calories - @Model.menu.AvailableEntrees.ElementAt(i).Calories
-            <br />
-            Ingredients -
-            @for (int j = 0; j < Model.menu.AvailableEntrees.ElementAt(i).Ingredients.Count; j++)
-            {
-                
-                @Model.menu.AvailableEntrees.ElementAt(i).Ingredients.ElementAt(j)
-                if (j < Model.menu.AvailableEntrees.ElementAt(i).Ingredients.Count - 1)
-                {
-                    @:,&nbsp;
-                }
-            }
-        </p>
-    </div>
-}
-<h2>Sides</h2>
-@for (int i = 0; i < Model.menu.AvailableSide.Count; i++)
-{
-    <div class="menu-item">
-        <p style="font-weight: bold; margin-bottom: 0px; margin-top: 8px">
-            @Model.menu.AvailableSide.ElementAt(i).ToString().Substring(6): @String.Format("{0:C}", Model.menu.AvailableSide.ElementAt(i).Price)
-        </p>
-
-        <p style="padding-left: 40px; margin-top: 0px;">
-            Calories - @Model.menu.AvailableSide.ElementAt(i).Calories
-            <br />
-            Ingredients -
-            @for (int j = 0; j < Model.menu.AvailableSide.ElementAt(i).Ingredients.Count; j++)
-            {
-
-
-                @Model.menu.AvailableSide.ElementAt(i).Ingredients.ElementAt(j)
-                if (j < Model.menu.AvailableSide.ElementAt(i).Ingredients.Count - 1)
-                {
-                    @:,&nbsp;
-                }
-                
-            }
-        </p>
-    </div>
-}
-<h2>Drinks</h2>
-@for(int i =0; i<Model.menu.AvailableDrinks.Count; i++)
-{
-<div class="menu-item">
-    <p style="font-weight: bold; margin-bottom: 0px; margin-top: 8px">
-    @Model.menu.AvailableDrinks.ElementAt(i).ToString().Substring(6): @String.Format("{0:C}", Model.menu.AvailableDrinks.ElementAt(i).Price)
-        </p>
-    
-    <p style="padding-left: 40px; margin-top: 0px;">
-        Calories - @Model.menu.AvailableDrinks.ElementAt(i).Calories
-        <br />
-        Ingredients -
-        @for (int j = 0; j < Model.menu.AvailableDrinks.ElementAt(i).Ingredients.Count; j++)
+<div id="fullmenu">
+    <div>
+        @for (int i = 0; i < Model.AvailableCombos.Count; i++)
         {
-
-            @Model.menu.AvailableDrinks.ElementAt(i).Ingredients.ElementAt(j).ToString()
-            if (j < Model.menu.AvailableDrinks.ElementAt(i).Ingredients.Count - 1)
+            if (i == 0)
             {
-                @:,&nbsp;
+                <h2>Combos</h2>
+                <h3 style="font-size: 14px; ">Each combo comes with a side of Fryceritops and a Sodasaurus of any flavor!</h3>
             }
+
+            <div class="menu-item">
+                <p style="font-weight: bold; margin-bottom: 0px; margin-top: 8px">
+                    @Model.AvailableCombos.ElementAt(i): @String.Format("{0:C}", Model.AvailableCombos.ElementAt(i).Price)
+                </p>
+
+                <p style="padding-left: 40px; margin-top: 0px;">
+                    Calories - @Model.AvailableCombos.ElementAt(i).Calories
+                    <br />
+                    Ingredients -
+                    @for (int j = 0; j < Model.AvailableCombos.ElementAt(i).Ingredients.Count; j++)
+                    {
+
+                        @Model.AvailableCombos.ElementAt(i).Ingredients.ElementAt(j)
+                        if (j < Model.AvailableCombos.ElementAt(i).Ingredients.Count - 1)
+                        {
+                            @:,&nbsp;
+                        }
+                    }
+
+                </p>
+            </div>
         }
-    </p>
+
+        @for (int i = 0; i < Model.AvailableEntrees.Count; i++)
+        {
+            @if (i == 0)
+            {
+                <h2>Entrees</h2>
+            }
+
+            <div class="menu-item">
+                <p style="font-weight: bold; margin-bottom: 0px; margin-top: 8px">
+                    @Model.AvailableEntrees.ElementAt(i): @String.Format("{0:C}", Model.AvailableEntrees.ElementAt(i).Price)
+                </p>
+
+                <p style="padding-left: 40px; margin-top: 0px;">
+                    Calories - @Model.AvailableEntrees.ElementAt(i).Calories
+                    <br />
+                    Ingredients -
+                    @for (int j = 0; j < Model.AvailableEntrees.ElementAt(i).Ingredients.Count; j++)
+                    {
+
+                        @Model.AvailableEntrees.ElementAt(i).Ingredients.ElementAt(j)
+                        if (j < Model.AvailableEntrees.ElementAt(i).Ingredients.Count - 1)
+                        {
+                            @:,&nbsp;
+                        }
+                    }
+                </p>
+            </div>
+        }
+
+        @for (int i = 0; i < Model.AvailableSides.Count; i++)
+        {
+            if (i == 0)
+            {
+                <h2>Sides</h2>
+            }
+            <div class="menu-item">
+                <p style="font-weight: bold; margin-bottom: 0px; margin-top: 8px">
+                    @Model.AvailableSides.ElementAt(i).ToString().Substring(6): @String.Format("{0:C}", Model.AvailableSides.ElementAt(i).Price)
+                </p>
+
+                <p style="padding-left: 40px; margin-top: 0px;">
+                    Calories - @Model.AvailableSides.ElementAt(i).Calories
+                    <br />
+                    Ingredients -
+                    @for (int j = 0; j < Model.AvailableSides.ElementAt(i).Ingredients.Count; j++)
+                    {
+
+
+                        @Model.AvailableSides.ElementAt(i).Ingredients.ElementAt(j)
+                        if (j < Model.AvailableSides.ElementAt(i).Ingredients.Count - 1)
+                        {
+                            @:,&nbsp;
+                        }
+
+                    }
+                </p>
+            </div>
+        }
+
+        @for (int i = 0; i < Model.AvailableDrinks.Count; i++)
+        {
+            if (i == 0)
+            {
+                <h2>Drinks</h2>
+            }
+            <div class="menu-item">
+                <p style="font-weight: bold; margin-bottom: 0px; margin-top: 8px">
+                    @Model.AvailableDrinks.ElementAt(i).ToString().Substring(6): @String.Format("{0:C}", Model.AvailableDrinks.ElementAt(i).Price)
+                </p>
+
+                <p style="padding-left: 40px; margin-top: 0px;">
+                    Calories - @Model.AvailableDrinks.ElementAt(i).Calories
+                    <br />
+                    Ingredients -
+                    @for (int j = 0; j < Model.AvailableDrinks.ElementAt(i).Ingredients.Count; j++)
+                    {
+
+                        @Model.AvailableDrinks.ElementAt(i).Ingredients.ElementAt(j).ToString()
+                        if (j < Model.AvailableDrinks.ElementAt(i).Ingredients.Count - 1)
+                        {
+                            @:,&nbsp;
+                        }
+                    }
+                </p>
+            </div>
+        }
+    </div>
+    <form method="post">
+        <input type="text" name="search" id="search" value=" @Model.search" />
+
+        <input type="submit" value="Search" />
+        <input type="submit" value="Apply Filter(s)" />
+        <h4> Menu Category</h4>
+        <div class="checkbox-list">
+            <label>
+                <input type="checkbox" name="type" value="Combos" checked="@Model.type.Contains("Combos")" />
+                Combos
+            </label>
+
+            <label>
+                <input type="checkbox" name="mpaa" value="Entrees" checked="@Model.type.Contains("Entrees")" />
+                Entrees
+            </label>
+
+            <label>
+                <input type="checkbox" name="type" value="Sides" checked="@Model.type.Contains("Sides")" />
+                Sides
+            </label>
+
+            <label>
+                <input type="checkbox" name="type" value="Drinks" checked="@Model.type.Contains("Drinks")" />
+                Drinks
+            </label>
+        </div>
+        <h4>Price</h4>
+        <label>
+            Min
+            <input id="minimum-Price" type="number" min="0" max="10" step="0.1" value="@Model.mini" name="mini" />
+        </label>
+        <label>
+            Max
+            <input id="maximum-Price" type="number" min="0" max="10" step="0.1" value="@Model.maxi" name="maxi" />
+        </label>
+        <h4>Exclude Ingredients</h4>
+        <div class="checkbox-list">
+            @for (int i = 0; i < Model.menu.PossibleIngredients.Count; i++)
+            {
+                <label>
+                    <input type="checkbox" name="ingred" value="@Model.menu.PossibleIngredients.ElementAt(i)" checked="@Model.ingred.Contains(Model.menu.PossibleIngredients.ElementAt(i))" />
+                    @Model.menu.PossibleIngredients.ElementAt(i)
+                </label>
+            }
+        </div>
+    </form>
 </div>
-}
+
