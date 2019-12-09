@@ -10,6 +10,7 @@ namespace DinoDiner.Menu
 {
     public abstract class Entree : MenuItem
     {
+        public Size Size { get; set; }
         /// <summary>
         /// Gets and sets the price
         /// </summary>

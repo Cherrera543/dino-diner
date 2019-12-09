@@ -9,6 +9,6 @@ namespace DinoDiner.Menu
     {
         uint Calories { get; }
         List<string> Ingredients { get; }
-
+        Size Size { get; set; }
     }
 }
