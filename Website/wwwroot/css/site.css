@@ -32,7 +32,9 @@ h1 {
     font-family: Impact;
     font-size: 36px;
 }
-
+#food{
+    width: 50%;
+}
 #fullmenu {
     width: 100%;
     display: flex;
@@ -55,5 +57,15 @@ form {
 .checkbox-list {
     display: flex;
     flex-direction: column;
+}
+
+.gridbox {
+    display: grid;
+    grid-template-columns: 100px 80px 100px;
+    grid-template-rows: 20px 20px 20px 20px;
+    text-align: center;
+}
+.griditem {
+    border:solid 1px black;
 }
 

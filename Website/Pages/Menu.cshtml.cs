@@ -14,12 +14,11 @@ namespace Website.Pages
         {
             get { return new Menu(); }
         }
-        public List<MenuItem> AvailableEntrees { get; set; } 
-        public List<MenuItem> AvailableCombos { get; set; }
-        public List<MenuItem> AvailableSides { get; set; }
-        public List<MenuItem> AvailableDrinks { get; set; }
+        public IEnumerable<MenuItem> AvailableEntrees;
+        public IEnumerable<MenuItem> AvailableCombos;
+        public IEnumerable<MenuItem> AvailableSides;
+        public IEnumerable<MenuItem> AvailableDrinks;
 
-       
         [BindProperty]
         public List<String> type { get; set; } = new List<String>();
         [BindProperty]
@@ -45,98 +44,54 @@ namespace Website.Pages
             AvailableDrinks = menu.AvailableDrinks;
             if(search != null)
             {
-                AvailableCombos = Search(AvailableCombos, search);
-                AvailableEntrees = Search(AvailableEntrees, search);
-                AvailableSides = Search(AvailableSides, search);
-                AvailableDrinks = Search(AvailableDrinks, search);
+                AvailableCombos = AvailableCombos.Where(combo => combo.Description.Contains(search, StringComparison.OrdinalIgnoreCase));
+                AvailableEntrees = AvailableEntrees.Where(entree => entree.Description.Contains(search, StringComparison.OrdinalIgnoreCase));
+                AvailableSides = AvailableSides.Where(side => side.Description.Contains(search, StringComparison.OrdinalIgnoreCase));
+                AvailableDrinks = AvailableDrinks.Where(drink => drink.Description.Contains(search, StringComparison.OrdinalIgnoreCase));
             }
             if (type.Count != 0)
             {
-                if (!type.Contains("Entrees")) { AvailableEntrees.Clear(); }
-                if (!type.Contains("Combos")) { AvailableCombos.Clear(); }
-                if (!type.Contains("Sides")) { AvailableSides.Clear(); }
-                if (!type.Contains("Drinks")) { AvailableDrinks.Clear(); }
+                if (!type.Contains("Entrees")) { AvailableEntrees = new List<MenuItem>(); }
+                if (!type.Contains("Combos")) { AvailableCombos = new List<MenuItem>(); }
+                if (!type.Contains("Sides")) { AvailableSides = new List<MenuItem>(); }
+                if (!type.Contains("Drinks")) { AvailableDrinks = new List<MenuItem>(); }
             }
             if (mini != 0.0)
             {
-                AvailableCombos = Minimum(AvailableCombos, mini);
-                AvailableEntrees = Minimum(AvailableEntrees, mini);
-                AvailableSides = Minimum(AvailableSides, mini);
-                AvailableDrinks = Minimum(AvailableDrinks, mini);
+                AvailableCombos = AvailableCombos.Where(combo => combo.Price > mini);
+                AvailableEntrees = AvailableEntrees.Where(entree => entree.Price > mini);
+                AvailableSides = AvailableSides.Where(side => side.Price > mini);
+                AvailableDrinks = AvailableDrinks.Where(drink => drink.Price > mini);
             }
             if(maxi != 10.0)
             {
-                AvailableCombos = Maximum(AvailableCombos, maxi);
-                AvailableEntrees = Maximum(AvailableEntrees, maxi);
-                AvailableSides = Maximum(AvailableSides, maxi);
-                AvailableDrinks = Maximum(AvailableDrinks, maxi);
+                AvailableCombos = AvailableCombos.Where(combo => combo.Price < maxi);
+                AvailableEntrees = AvailableEntrees.Where(entree => entree.Price < maxi);
+                AvailableSides = AvailableSides.Where(side => side.Price < maxi);
+                AvailableDrinks = AvailableDrinks.Where(drink => drink.Price < maxi);
             }
             if(ingred.Count != 0)
             {
-                AvailableCombos = Ingredients(AvailableCombos, ingred);
-                AvailableEntrees = Ingredients(AvailableEntrees, ingred);
-                AvailableSides = Ingredients(AvailableSides, ingred);
-                AvailableDrinks = Ingredients(AvailableDrinks, ingred);
+                foreach(String s in ingred)
+                {
+                    AvailableCombos = AvailableCombos.Where(combo => !combo.Ingredients.Contains(s));
+                    AvailableEntrees = AvailableEntrees.Where(entree => !entree.Ingredients.Contains(s));
+                    AvailableSides = AvailableSides.Where(side => !side.Ingredients.Contains(s));
+                    AvailableDrinks = AvailableDrinks.Where(drink => !drink.Ingredients.Contains(s));
+                }
             }
            
         }
 
-        private List<MenuItem> Search(List<MenuItem> result, string term)
+        public double ChangePrice(MenuItem m, Size s)
         {
-            List<MenuItem> result2 = new List<MenuItem>();
-            foreach(MenuItem m in result)
-            {
-                if(m.ToString().Contains(term, StringComparison.OrdinalIgnoreCase))
-                {
-                    result2.Add(m);
-                }
-            }
-            return result2;
+            m.Size = s;
+            return m.Price;
         }
-
-        private List<MenuItem> Minimum(List<MenuItem> result, double min)
+        public uint ChangeCalories(MenuItem m, Size s)
         {
-            List<MenuItem> result2 = new List<MenuItem>();
-            foreach(MenuItem m in result)
-            {
-                if (m.Price > min)
-                {
-                    result2.Add(m);
-                }
-            }
-            return result2;
-        }
-
-        private List<MenuItem> Maximum(List<MenuItem> result, double max)
-        {
-            List<MenuItem> result2 = new List<MenuItem>();
-            foreach (MenuItem m in result)
-            {
-                if (m.Price < max)
-                {
-                    result2.Add(m);
-                }
-            }
-            return result2;
-        }
-
-        private List<MenuItem> Ingredients(List<MenuItem> result, List<String> ingred)
-        {
-            List<MenuItem> result2 = new List<MenuItem>();
-            foreach(MenuItem m in result)
-            {
-                bool cont = false;
-                foreach(String s in ingred)
-                {
-                    
-                    if (m.Ingredients.Contains(s))
-                    {
-                        cont = true;
-                    }
-                }
-                if (cont == false) { result2.Add(m); }
-            }
-            return result2;
+            m.Size = s;
+            return m.Calories;
         }
     }
 }

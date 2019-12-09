@@ -1,4 +1,5 @@
 ﻿@page
+@using DinoDiner.Menu;
 @model Website.Pages.MenuModel
 @{
     ViewData["Title"] = "Menu";
@@ -8,29 +9,40 @@
 
 
 <div id="fullmenu">
-    <div>
-        @for (int i = 0; i < Model.AvailableCombos.Count; i++)
+    <div id="food">
+        @if (Model.AvailableCombos.Any())
         {
-            if (i == 0)
-            {
-                <h2>Combos</h2>
-                <h3 style="font-size: 14px; ">Each combo comes with a side of Fryceritops and a Sodasaurus of any flavor!</h3>
-            }
-
+            <h2>Combos</h2>
+            <h3 style="font-size: 14px; ">Each combo comes with a side of Fryceritops and a Sodasaurus of any flavor!</h3>
+        }
+        @foreach (MenuItem m in Model.AvailableCombos)
+        {
             <div class="menu-item">
                 <p style="font-weight: bold; margin-bottom: 0px; margin-top: 8px">
-                    @Model.AvailableCombos.ElementAt(i): @String.Format("{0:C}", Model.AvailableCombos.ElementAt(i).Price)
+                    @m 
                 </p>
-
+                <div class="gridbox">
+                    <div class="griditem" style="font-weight: bold;">Size</div>
+                    <div class="griditem" style="font-weight: bold;">Price</div>
+                    <div class="griditem" style="font-weight: bold;" >Calories</div>
+                    <div class="griditem">Small</div>
+                    <div class="griditem">@String.Format("{0:C}", m.Price)</div>
+                    <div class="griditem">@m.Calories</div>
+                    <div class="griditem">Medium</div>
+                    <div class="griditem">@String.Format("{0:C}",Model.ChangePrice(m, Size.Medium))</div>
+                    <div class="griditem">@Model.ChangeCalories(m, Size.Medium)</div>
+                    <div class="griditem">Large</div>
+                    <div class="griditem">@String.Format("{0:C}",Model.ChangePrice(m, Size.Large))</div>
+                    <div class="griditem">@Model.ChangeCalories(m, Size.Large)</div>
+                </div>
                 <p style="padding-left: 40px; margin-top: 0px;">
-                    Calories - @Model.AvailableCombos.ElementAt(i).Calories
                     <br />
                     Ingredients -
-                    @for (int j = 0; j < Model.AvailableCombos.ElementAt(i).Ingredients.Count; j++)
+                    @for (int j = 0; j < m.Ingredients.Count; j++)
                     {
 
-                        @Model.AvailableCombos.ElementAt(i).Ingredients.ElementAt(j)
-                        if (j < Model.AvailableCombos.ElementAt(i).Ingredients.Count - 1)
+                        @m.Ingredients.ElementAt(j)
+                        if (j < m.Ingredients.Count - 1)
                         {
                             @:,&nbsp;
                         }
@@ -40,91 +52,113 @@
             </div>
         }
 
-        @for (int i = 0; i < Model.AvailableEntrees.Count; i++)
+        @if (Model.AvailableEntrees.Any())
         {
-            @if (i == 0)
+            <h2>Entrees</h2>
+        }
+        @foreach (MenuItem m in Model.AvailableEntrees)
+        {
+    <div class="menu-item">
+        <p style="font-weight: bold; margin-bottom: 0px; margin-top: 8px">
+            @m: @String.Format("{0:C}", m.Price)
+        </p>
+       
+        <p style="padding-left: 40px; margin-top: 0px;">
+            Calories - @m.Calories
+            <br />
+            Ingredients -
+            @for (int j = 0; j < m.Ingredients.Count; j++)
             {
-                <h2>Entrees</h2>
+
+                @m.Ingredients.ElementAt(j)
+                if (j < m.Ingredients.Count - 1)
+                {
+                    @:,&nbsp;
+                }
             }
-
-            <div class="menu-item">
-                <p style="font-weight: bold; margin-bottom: 0px; margin-top: 8px">
-                    @Model.AvailableEntrees.ElementAt(i): @String.Format("{0:C}", Model.AvailableEntrees.ElementAt(i).Price)
-                </p>
-
-                <p style="padding-left: 40px; margin-top: 0px;">
-                    Calories - @Model.AvailableEntrees.ElementAt(i).Calories
-                    <br />
-                    Ingredients -
-                    @for (int j = 0; j < Model.AvailableEntrees.ElementAt(i).Ingredients.Count; j++)
-                    {
-
-                        @Model.AvailableEntrees.ElementAt(i).Ingredients.ElementAt(j)
-                        if (j < Model.AvailableEntrees.ElementAt(i).Ingredients.Count - 1)
-                        {
-                            @:,&nbsp;
-                        }
-                    }
-                </p>
-            </div>
+        </p>
+    </div>
         }
 
-        @for (int i = 0; i < Model.AvailableSides.Count; i++)
+        @if (Model.AvailableSides.Any())
         {
-            if (i == 0)
-            {
-                <h2>Sides</h2>
-            }
-            <div class="menu-item">
-                <p style="font-weight: bold; margin-bottom: 0px; margin-top: 8px">
-                    @Model.AvailableSides.ElementAt(i).ToString().Substring(6): @String.Format("{0:C}", Model.AvailableSides.ElementAt(i).Price)
-                </p>
-
-                <p style="padding-left: 40px; margin-top: 0px;">
-                    Calories - @Model.AvailableSides.ElementAt(i).Calories
-                    <br />
-                    Ingredients -
-                    @for (int j = 0; j < Model.AvailableSides.ElementAt(i).Ingredients.Count; j++)
-                    {
-
-
-                        @Model.AvailableSides.ElementAt(i).Ingredients.ElementAt(j)
-                        if (j < Model.AvailableSides.ElementAt(i).Ingredients.Count - 1)
-                        {
-                            @:,&nbsp;
-                        }
-
-                    }
-                </p>
-            </div>
+            <h2>Sides</h2>
         }
-
-        @for (int i = 0; i < Model.AvailableDrinks.Count; i++)
+        @foreach (MenuItem m in Model.AvailableSides)
         {
-            if (i == 0)
+    <div class="menu-item">
+        <p style="font-weight: bold; margin-bottom: 0px; margin-top: 8px">
+            @m.ToString().Substring(6)
+        </p>
+        <div class="gridbox">
+            <div class="griditem">Size</div>
+            <div class="griditem">Price</div>
+            <div class="griditem">Calories</div>
+            <div class="griditem">Small</div>
+            <div class="griditem">@String.Format("{0:C}", m.Price)</div>
+            <div class="griditem">@m.Calories</div>
+            <div class="griditem">Medium</div>
+            <div class="griditem">@String.Format("{0:C}", Model.ChangePrice(m, Size.Medium))</div>
+            <div class="griditem">@Model.ChangeCalories(m, Size.Medium)</div>
+            <div class="griditem">Large</div>
+            <div class="griditem">@String.Format("{0:C}", Model.ChangePrice(m, Size.Large))</div>
+            <div class="griditem">@Model.ChangeCalories(m, Size.Large)</div>
+        </div>
+        <p style="padding-left: 40px; margin-top: 0px;">
+            <br />
+            Ingredients -
+            @for (int j = 0; j < m.Ingredients.Count; j++)
             {
-                <h2>Drinks</h2>
+
+
+                @m.Ingredients.ElementAt(j)
+                if (j < m.Ingredients.Count - 1)
+                {
+                    @:,&nbsp;
+                }
+
             }
-            <div class="menu-item">
-                <p style="font-weight: bold; margin-bottom: 0px; margin-top: 8px">
-                    @Model.AvailableDrinks.ElementAt(i).ToString().Substring(6): @String.Format("{0:C}", Model.AvailableDrinks.ElementAt(i).Price)
-                </p>
+        </p>
+    </div>
+        }
+        @if (Model.AvailableDrinks.Any())
+        {
+            <h2>Drinks</h2>
+        }
+        @foreach (MenuItem m in Model.AvailableDrinks)
+        {
+    <div class="menu-item">
+        <p style="font-weight: bold; margin-bottom: 0px; margin-top: 8px">
+            @m.ToString().Substring(6)
+        </p>
+        <div class="gridbox">
+            <div class="griditem">Size</div>
+            <div class="griditem">Price</div>
+            <div class="griditem">Calories</div>
+            <div class="griditem">Small</div>
+            <div class="griditem">@String.Format("{0:C}", m.Price)</div>
+            <div class="griditem">@m.Calories</div>
+            <div class="griditem">Medium</div>
+            <div class="griditem">@String.Format("{0:C}", Model.ChangePrice(m, Size.Medium))</div>
+            <div class="griditem">@Model.ChangeCalories(m, Size.Medium)</div>
+            <div class="griditem">Large</div>
+            <div class="griditem">@String.Format("{0:C}", Model.ChangePrice(m, Size.Large))</div>
+            <div class="griditem">@Model.ChangeCalories(m, Size.Large)</div>
+        </div>
+        <p style="padding-left: 40px; margin-top: 0px;">
+            <br />
+            Ingredients -
+            @for (int j = 0; j < m.Ingredients.Count; j++)
+            {
 
-                <p style="padding-left: 40px; margin-top: 0px;">
-                    Calories - @Model.AvailableDrinks.ElementAt(i).Calories
-                    <br />
-                    Ingredients -
-                    @for (int j = 0; j < Model.AvailableDrinks.ElementAt(i).Ingredients.Count; j++)
-                    {
-
-                        @Model.AvailableDrinks.ElementAt(i).Ingredients.ElementAt(j).ToString()
-                        if (j < Model.AvailableDrinks.ElementAt(i).Ingredients.Count - 1)
-                        {
-                            @:,&nbsp;
-                        }
-                    }
-                </p>
-            </div>
+                @m.Ingredients.ElementAt(j).ToString()
+                if (j < m.Ingredients.Count - 1)
+                {
+                    @:,&nbsp;
+                }
+            }
+        </p>
+    </div>
         }
     </div>
     <form method="post">
@@ -140,7 +174,7 @@
             </label>
 
             <label>
-                <input type="checkbox" name="mpaa" value="Entrees" checked="@Model.type.Contains("Entrees")" />
+                <input type="checkbox" name="type" value="Entrees" checked="@Model.type.Contains("Entrees")" />
                 Entrees
             </label>
 
